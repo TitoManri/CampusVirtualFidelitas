@@ -8,7 +8,6 @@ public class FidelitasApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FidelitasApplication.class, args);
-                System.err.print(args);
 	}
 
 }
