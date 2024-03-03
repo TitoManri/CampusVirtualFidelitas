@@ -12,23 +12,21 @@ import lombok.Data;
  *
  * @author Manrique Carazo
  */
-
-
-
 @Data
 @Entity // Para decir que es una tabla de la base de datos
-@Table(name="estudiantes")
+@Table(name = "estudiante")
 
-public class InicioSesion implements Serializable{
+public class InicioSesion implements Serializable {
+
     private static final long serialVersionUID = 1L;
-@Id  // Para el Primary Key
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name="id_Categoria")
+    @Id  // Para el Primary Key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_estudiante")
     private Long idEstudiante;
     private String nombre;
     private String correo;
     private String contrasena;
-    private String ruta_imagen;
+    private String rutaImagen;
     private boolean activo;
-    
+
 }
