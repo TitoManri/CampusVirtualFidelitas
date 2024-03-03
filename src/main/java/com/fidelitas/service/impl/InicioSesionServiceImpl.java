@@ -1,18 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.fidelitas.service.impl;
 
-import com.fidelitas.service.*;
-import com.fidelitas.domain.*;
-import com.fidelitas.dao.*;
+import com.fidelitas.dao.InicioSesionDao;
+import com.fidelitas.domain.InicioSesion;
+import com.fidelitas.service.InicioSesionService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
+public class InicioSesionServiceImpl implements InicioSesionService {
 
-/**
- *
- * @author Ana Maria Castro
- */
-public class InicioSesionServiceImpl {
-    
+    @Autowired
+    private InicioSesionDao inicioSesionDao;
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<InicioSesion> getInicioSesiones(boolean activos) {
+        var lista = inicioSesionDao.findAll();
+        if (activos) {
+            lista.removeIf(c -> !c.isActivo());
+        }
+        return lista;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public InicioSesion getInicioSesion(InicioSesion inicioSesion) {
+        return inicioSesionDao.findById(inicioSesion.getIdEstudiante()).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public void save(InicioSesion inicioSesion) {
+        inicioSesionDao.save(inicioSesion);
+    }
+
+    @Override
+    @Transactional
+    public void delete(InicioSesion inicioSesion) {
+        inicioSesionDao.delete(inicioSesion);
+    }
 }

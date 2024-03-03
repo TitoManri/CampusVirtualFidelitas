@@ -6,7 +6,7 @@ package com.fidelitas.controller;
 
 /**
  *
- * @author Manrique Carazo
+ * @author Ana Maria Castro
  */
 public class ApartadoClasesController {
     

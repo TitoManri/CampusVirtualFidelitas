@@ -4,11 +4,15 @@
  */
 package com.fidelitas.dao;
 
+import com.fidelitas.domain.InicioSesion;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
 
 /**
  *
- * @author Ana Maria Castro
+ * @author Manrique Carazo
  */
-public class InicioSesionDao {
-    
+public interface InicioSesionDao extends JpaRepository <InicioSesion,Long>{
+   
 }

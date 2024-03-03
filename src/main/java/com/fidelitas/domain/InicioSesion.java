@@ -4,13 +4,31 @@
  */
 package com.fidelitas.domain;
 
-import com.fidelitas.dao.*;
-
+import jakarta.persistence.*;
+import java.io.Serializable;
+import lombok.Data;
 
 /**
  *
- * @author Ana Maria Castro
+ * @author Manrique Carazo
  */
-public class InicioSesion {
+
+
+
+@Data
+@Entity // Para decir que es una tabla de la base de datos
+@Table(name="estudiantes")
+
+public class InicioSesion implements Serializable{
+    private static final long serialVersionUID = 1L;
+@Id  // Para el Primary Key
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name="id_Categoria")
+    private Long idEstudiante;
+    private String nombre;
+    private String correo;
+    private String contrasena;
+    private String ruta_imagen;
+    private boolean activo;
     
 }

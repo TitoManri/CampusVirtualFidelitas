@@ -6,7 +6,7 @@ package com.fidelitas.controller;
 
 /**
  *
- * @author Ana Maria Castro
+ * @author Manrique 
  */
 public class InicioSesionController {
     
