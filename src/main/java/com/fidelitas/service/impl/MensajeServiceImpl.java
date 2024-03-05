@@ -1,3 +1,4 @@
+/*
 package com.fidelitas.service.impl;
 
 import com.fidelitas.dao.MensajeDao;
@@ -20,7 +21,7 @@ public class MensajeServiceImpl implements MensajeService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Mensaje> getMensajes() {
+    public List<Mensaje > getMensajes() {
         return mensajeDao.findAll();
     }
 
@@ -56,3 +57,4 @@ public class MensajeServiceImpl implements MensajeService {
         }
     }
 }
+*/

@@ -1,4 +1,4 @@
-package com.fidelitas.service;
+/*package com.fidelitas.service;
 
 import com.fidelitas.domain.Mensaje;
 import java.util.List;
@@ -13,3 +13,4 @@ public interface MensajeService {
 
     public void saveMensaje(Mensaje mensaje);
 }
+*/

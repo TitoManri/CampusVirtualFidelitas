@@ -1,10 +1,12 @@
 package com.fidelitas.service;
 
+import com.fidelitas.dao.InicioSesionDao;
 import com.fidelitas.domain.InicioSesion;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public interface InicioSesionService {
-    
+        
     // Se obtiene un listado de categorias en un List
     public List<InicioSesion> getInicioSesiones(boolean activos);
     
@@ -17,4 +19,7 @@ public interface InicioSesionService {
     
     // Se elimina el categoria que tiene el id pasado por parámetro
     public void delete(InicioSesion iniciosesion);
+    
+    public InicioSesion buscarPorCorreo(String correo);
+    
 }

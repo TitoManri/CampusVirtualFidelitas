@@ -16,10 +16,12 @@ public class InicioSesionController {
     
     @Autowired
     private InicioSesionService inicioSesionService;
-
+    
     @GetMapping("/")
     public String mostrarPaginaInicioSesion(Model model) {
         model.addAttribute("inicioSesion", new InicioSesion());
-        return "/iniciosesion/login";
+        return "inicio";
     }
+
 }
+

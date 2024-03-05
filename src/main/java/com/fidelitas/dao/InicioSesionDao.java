@@ -14,5 +14,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Manrique Carazo
  */
 public interface InicioSesionDao extends JpaRepository <InicioSesion,Long>{
-   
+   InicioSesion findByCorreo(String correo);
 }

@@ -1,4 +1,4 @@
-package com.fidelitas.controller;
+/*package com.fidelitas.controller;
 
 import com.fidelitas.service.MensajeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,3 +26,4 @@ public class MensajeController {
     }
 
 }
+*/

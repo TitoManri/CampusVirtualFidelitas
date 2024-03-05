@@ -41,4 +41,10 @@ public class InicioSesionServiceImpl implements InicioSesionService {
     public void delete(InicioSesion inicioSesion) {
         inicioSesionDao.delete(inicioSesion);
     }
+    
+    @Override
+    public InicioSesion buscarPorCorreo(String correo) {
+        return inicioSesionDao.findByCorreo(correo);
+    }
+    
 }

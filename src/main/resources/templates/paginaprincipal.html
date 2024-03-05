@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Virtual</title>
+    <link href="css/pp.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#"><img class="logo-img" src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"></a>
+            <button class="nav-link" onclick="location.href='#'">Area Personal</button>
+            <button class="nav-link" onclick="location.href='#'">Planes Estudio</button>
+            <button class="nav-link" onclick="location.href='#'">Preguntas Frecuentes</button>
+            <button class="nav-link-plataforma" onclick="location.href='#'">Contactar con soporte de plataforma</button>
+            <a href="#"><img class="nav-link-mensajes" th:src="@{img/mensajes.png}" width="32" height="32" alt="Mensajes"></a>
+        </nav>
+    </header>
+
+    <section>
+        <h1>Area Personal</h1>
+        <h2>Resumen Curso</h2>
+        <a class= "apartado-clases" href="#">Todos</a>
+        <a class= "apartado-clases" href="#">En progreso</a>
+        <a class= "apartado-clases" href="#">Futuros</a>
+        <a class= "apartado-clases" href="#">Pasados</a>
+        <a class= "apartado-clases" href="#">Destacados</a>
+        <a class= "apartado-clases" href="#">Eliminado de la vista</a>
+    </section>
+
+    <footer>
+        <img class="logo-img" th:src="@{/logo_fide_blanco.png}" width="124" height="100" alt="Logo Fide">
+        <div class="redes">
+            <a href="#"><img class="img-footer" th:src="@{img/facebook.png}" width="16" height="16" alt="facebook"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/whatsapp.png}" width="16" height="16" alt="whatsapp"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/twitter.png}" width="16" height="16" alt="twitter"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/youtube.png}" width="16" height="16" alt="youtube"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/tiktok.png}" width="16" height="16" alt="tiktok"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/linkedin.png}" width="16" height="16" alt="linkedin"></a>
+        </div>
+        <a class="numero" href="#">+506 2206-8600</a>
+    </footer>
+</body>
+</html>
