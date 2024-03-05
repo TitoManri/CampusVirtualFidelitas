@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Fidélitas</title>
+    </head>
+
+    <body>
+        <div class="container" th:fragment="mensajeria" style="margin-top: 10px;">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Contactos</h4>
+                        </div>
+                        <div th:if="${usuarios != null and not #lists.isEmpty(usuarios)}">
+                            <table class="table table-striped table-hover" id="contactos-table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre Completo</th>
+
+                                        <th>Correo electrónico</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="usuario, contador : ${usuarios}">
+                                        <td th:text="${contador.count}"></td>
+                                        <td th:text="${usuario.nombre} + ' ' + ${usuario.apellidos}"></td>
+                                        <td th:text="${usuario.correo}"></td>
+                                        <td>
+                                            <!-- Agrega aquí cualquier acción relacionada con los contactos si es necesario -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center p-2" th:if="${usuarios == null or #lists.isEmpty(usuarios)}">
+                            <span>No hay contactos disponibles.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Sección para escribir el correo -->
+                    <section>
+                        <form action="/mensaje/enviarCorreo" method="post">
+                            <div class="mb-3">
+                                <label for="from" class="form-label fw-bold">DE:</label>
+                                <input type="email" class="form-control" id="from" name="from" placeholder="name@example.com" />
+                            </div>
+                            <!-- Agrega un identificador único al campo de entrada de "Para" -->
+                            <div class="mb-3">
+                                <label for="para" class="form-label fw-bold">PARA:</label>
+                                <input type="email" class="form-control" id="para" name="to" placeholder="name@example.com" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="asunto" class="form-label fw-bold">Asunto:</label>
+                                <input type="text" class="form-control" id="asunto" name="subject" placeholder="Asunto" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="contenido" class="form-label fw-bold">Contenido:</label>
+                                <textarea class="form-control" id="contenido" name="body" rows="3"></textarea>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-primary" type="submit">Enviar</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <script th:fragment="click">
+            // Agregamos un evento de clic a las filas de la tabla
+            document.querySelectorAll('#contactos-table tbody tr').forEach(row => {
+                row.addEventListener('click', () => {
+                    // Obtenemos el correo electrónico de la fila
+                    const correo = row.cells[2].innerText.trim();
+                    // Asignamos el correo al campo "PARA"
+                    document.getElementById('para').value = correo;
+                });
+            });
+        </script>
+    </body>
+</html>
