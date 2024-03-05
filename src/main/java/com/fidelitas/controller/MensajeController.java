@@ -1,4 +1,4 @@
-/*package com.fidelitas.controller;
+package com.fidelitas.controller;
 
 import com.fidelitas.service.MensajeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ public class MensajeController {
     @Autowired
     private MensajeService mensajeService;
 
-    // Endpoint para enviar correo
+    //Endpoint para enviar correo
     @PostMapping("/mensaje/enviarCorreo")
     @ResponseBody
     public void enviarCorreo(
@@ -26,4 +26,3 @@ public class MensajeController {
     }
 
 }
-*/

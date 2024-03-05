@@ -1,4 +1,3 @@
-/*
 package com.fidelitas.service.impl;
 
 import com.fidelitas.dao.MensajeDao;
@@ -57,4 +56,3 @@ public class MensajeServiceImpl implements MensajeService {
         }
     }
 }
-*/

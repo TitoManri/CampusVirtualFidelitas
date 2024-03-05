@@ -1,4 +1,4 @@
-/*package com.fidelitas.domain;
+package com.fidelitas.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -31,4 +31,4 @@ public class Mensaje implements Serializable {
     @JoinColumn(name = "id_receptor", referencedColumnName = "id_usuario")
     private Usuario receptor;
 
-}*/
+}
