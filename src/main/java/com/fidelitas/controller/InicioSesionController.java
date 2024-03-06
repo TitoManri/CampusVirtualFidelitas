@@ -22,8 +22,10 @@ public class InicioSesionController {
     @GetMapping("/")
     public String mostrarPaginaInicioSesion(Model model) {
         model.addAttribute("inicioSesion", new InicioSesion());
-        return "inicio";
+        return "login";
     }
 
 }
+
+
 
