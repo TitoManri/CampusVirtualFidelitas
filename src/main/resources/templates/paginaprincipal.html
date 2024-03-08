@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <meta charset="UTF-8">
-]    <title>Campus Virtual</title>
-    <link href="pp.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{css/pp.css}" />
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#"><img class="logo-img" src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"></a>
-            <button class="nav-link" onclick="location.href='#'">Area Personal</button>
-            <button class="nav-link" onclick="location.href='#'">Planes Estudio</button>
-            <button class="nav-link" onclick="location.href='#'">Preguntas Frecuentes</button>
-            <button class="nav-link-plataforma" onclick="location.href='#'">Contactar con soporte de plataforma</button>
-            <a href="#"><img class="nav-link-mensajes" th:src="@{img/mensajes.png}" width="32" height="32" alt="Mensajes"></a>
-        </nav>
+    <header th:replace="~{plantillas/footer_header :: header}">
     </header>
 
     <section>
@@ -28,17 +18,6 @@
         <a class= "apartado-clases" href="#">Eliminado de la vista</a>
     </section>
 
-    <footer>
-        <img class="logo-img" th:src="@{/logo_fide_blanco.png}" width="124" height="100" alt="Logo Fide">
-        <div class="redes">
-            <a href="#"><img class="img-footer" th:src="@{img/facebook.png}" width="16" height="16" alt="facebook"></a>
-            <a href="#"><img class="img-footer" th:src="@{img/whatsapp.png}" width="16" height="16" alt="whatsapp"></a>
-            <a href="#"><img class="img-footer" th:src="@{img/twitter.png}" width="16" height="16" alt="twitter"></a>
-            <a href="#"><img class="img-footer" th:src="@{img/youtube.png}" width="16" height="16" alt="youtube"></a>
-            <a href="#"><img class="img-footer" th:src="@{img/tiktok.png}" width="16" height="16" alt="tiktok"></a>
-            <a href="#"><img class="img-footer" th:src="@{img/linkedin.png}" width="16" height="16" alt="linkedin"></a>
-        </div>
-        <a class="numero" href="#">+506 2206-8600</a>
-    </footer>
+    <footer th:replace="~{plantillas/footer_header :: footer}"/>
 </body>
 </html>

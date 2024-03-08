@@ -15,36 +15,11 @@ public class InicioSesionServiceImpl implements InicioSesionService {
     private InicioSesionDao inicioSesionDao;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<InicioSesion> getInicioSesiones(boolean activos) {
-        var lista = inicioSesionDao.findAll();
-        if (activos) {
-            lista.removeIf(c -> !c.isActivo());
-        }
-        return lista;
-    }
+    public boolean verificarCredenciales(String correo, String contrasena) {
+        // Buscar el inicio de sesión por correo
+        InicioSesion inicioSesion = inicioSesionDao.findByCorreo(correo);
 
-    @Override
-    @Transactional(readOnly = true)
-    public InicioSesion getInicioSesion(InicioSesion inicioSesion) {
-        return inicioSesionDao.findById(inicioSesion.getIdEstudiante()).orElse(null);
+        // Verificar si el inicio de sesión existe y si la contraseña coincide
+        return inicioSesion != null && inicioSesion.getContrasena().equals(contrasena);
     }
-
-    @Override
-    @Transactional
-    public void save(InicioSesion inicioSesion) {
-        inicioSesionDao.save(inicioSesion);
-    }
-
-    @Override
-    @Transactional
-    public void delete(InicioSesion inicioSesion) {
-        inicioSesionDao.delete(inicioSesion);
-    }
-    
-    @Override
-    public InicioSesion buscarPorCorreo(String correo) {
-        return inicioSesionDao.findByCorreo(correo);
-    }
-    
 }

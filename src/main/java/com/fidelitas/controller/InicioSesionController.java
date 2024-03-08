@@ -11,20 +11,41 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/")
 public class InicioSesionController {
-    
+
     @Autowired
-    private InicioSesionService inicioSesionService;
     
-    @GetMapping("/")
+    private InicioSesionService inicioSesionService;
+
+    @RequestMapping({"/", "/login"})
     public String mostrarPaginaInicioSesion(Model model) {
         model.addAttribute("inicioSesion", new InicioSesion());
-        return "login";
+        return "inicio";
+    }
+    
+    @GetMapping("/paginaprincipal")
+    public String mostrarPaginaPrincipal() {
+        return "paginaprincipal";
     }
 
+    @PostMapping("/login")
+    public String login(@RequestParam String correo, @RequestParam String contrasena, Model model) {
+        // Verificar las credenciales del inicio de sesión usando el servicio
+        boolean credencialesValidas = inicioSesionService.verificarCredenciales(correo, contrasena);
+
+        if (credencialesValidas) {
+            // Inicio de sesión autenticado, redirigir a la página principal
+            return "redirect:/paginaprincipal";
+        } else {
+            // Credenciales inválidas, mostrar un mensaje de error en la vista
+            model.addAttribute("error", "Credenciales inválidas");
+            return "login";
+        }
+    }
+    
 }
 
 

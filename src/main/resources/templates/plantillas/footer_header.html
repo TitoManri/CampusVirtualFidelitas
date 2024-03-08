@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Título de tu página</title>
+</head>
+<body>
+    <header th:fragment="header">
+        <nav>
+            <a href="#"><img class="logo-img" src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"></a>
+            <button class="nav-link" onclick="location.href='#'">Area Personal</button>
+            <button class="nav-link" onclick="location.href='#'">Planes Estudio</button>
+            <button class="nav-link" onclick="location.href='#'">Preguntas Frecuentes</button>
+            <button class="nav-link-plataforma" onclick="location.href='#'">Contactar con soporte de plataforma</button>
+            <a href="#"><img class="nav-link-mensajes" th:src="@{img/mensajes.png}" width="32" height="32" alt="Mensajes"></a>
+        </nav>
+    </header>
+
+    <footer th:fragment="footer">
+        <img class="logo-img" th:src="@{/logo_fide_blanco.png}" width="124" height="100" alt="Logo Fide">
+        <div class="redes">
+            <a href="#"><img class="img-footer" th:src="@{img/facebook.png}" width="16" height="16" alt="facebook"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/whatsapp.png}" width="16" height="16" alt="whatsapp"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/twitter.png}" width="16" height="16" alt="twitter"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/youtube.png}" width="16" height="16" alt="youtube"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/tiktok.png}" width="16" height="16" alt="tiktok"></a>
+            <a href="#"><img class="img-footer" th:src="@{img/linkedin.png}" width="16" height="16" alt="linkedin"></a>
+        </div>
+        <a class="numero" href="#">+506 2206-8600</a>
+    </footer>
+</body>
+</html>

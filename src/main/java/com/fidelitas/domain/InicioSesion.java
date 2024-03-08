@@ -13,20 +13,18 @@ import lombok.Data;
  * @author Manrique Carazo
  */
 @Data
-@Entity // Para decir que es una tabla de la base de datos
+@Entity
 @Table(name = "estudiante")
-
 public class InicioSesion implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id  // Para el Primary Key
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_estudiante")
     private Long idEstudiante;
     private String nombre;
+    private String apellidos;
     private String correo;
     private String contrasena;
-    private String rutaImagen;
-    private boolean activo;
+    private String fotoPerfil;
+    private boolean estado;
 
 }
