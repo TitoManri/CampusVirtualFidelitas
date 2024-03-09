@@ -1,15 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.fidelitas.domain;
 
 import com.fidelitas.dao.*;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import lombok.Data;
 
-/**
- *
- * @author Manrique Carazo
- */
-public class ApartadoClases {
+@Data
+@Entity 
+@Table(name = "apartadoClases")
+
+public class ApartadoClases implements Serializable {
     
-}
+    @Id  // Para el Primary Key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_curso")
+    private String idCurso;
+    private String nombreCurso;
+    private String profesorCurso;
+    private String horario;
+    private boolean activo;
+    
+    }
