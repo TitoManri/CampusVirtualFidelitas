@@ -18,6 +18,7 @@ public class ApartadoClases implements Serializable {
     private String nombreCurso;
     private String profesorCurso;
     private String horario;
+    private String fechaInicio;
+    private String fechaFin;
     private boolean activo;
-    
     }

@@ -1,9 +1,134 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 9 mar 2024, 16:22:00
-    Author     : ans
-*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
 
+header {
+    background-color: rgb(26, 48, 124);
+    color: #fff;
+    padding: 1px;
+    text-align: right;
+}
+
+.nav-link {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff; /* Color del texto normal */
+    transition: color 0.2s; /* Agregado para una transición suave del color del texto */
+}
+.nav-link-plataforma {
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 209, 58); /* Borde de 1 píxel amarillo */
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 300px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000000; /* Color del texto normal */
+    transition: color 0.2s, border 0.2s; /* Transiciones suaves para el color del texto y el borde */
+}
+
+.nav-link:hover, 
+.nav-link-plataforma:hover {
+    color:rgb(255, 209, 58); /* Cambia el color del texto al pasar el puntero */
+}
+
+.linea-izquierda,
+.linea-derecha {
+    margin: 0;
+}
+
+
+h1{
+    font-size: 35px;
+}
+
+h2{
+    font-size: 20px;
+    display: inline-block;
+    animation: slide 5s infinite alternate;
+    margin-right: 100px;
+}
+
+.logo-img {
+    width: 130px;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+}
+
+nav a {
+    color: #fff; 
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+section {
+    padding: 20px;
+}
+
+footer {
+    background-color: rgb(26, 48, 124);
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items:center;
+    justify-content: left;
+    gap: 10px; 
+}
+
+.redes{
+    margin-left: 20px; 
+    margin-top: 17px;    
+}
+
+.img-footer{
+    margin-left: 12px;    
+}
+
+.numero{
+    margin-left: 12px;
+    margin-top: 11px; 
+    color: white;     
+}
+
+.custom-bg {
+    background-color: rgb(26, 48, 124);
+    float: right;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 100000000000000px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000000; /* Color del texto normal */
+    transition: color 0.2s, border 0.2s; /* Transiciones suaves para el color del texto y el borde */
+    margin-right: 10px;
+}
+
+.custom-btn {
+    background-color: rgb(192, 193, 200);
+}
+
+.custom-btn:hover {
+    background-color: rgb(150, 151, 154); 
+}
+
+.interlineado{
+    font-size:1em;
+    line-height:1em;
+}
