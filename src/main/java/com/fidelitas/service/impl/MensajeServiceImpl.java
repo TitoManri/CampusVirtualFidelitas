@@ -20,7 +20,7 @@ public class MensajeServiceImpl implements MensajeService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Mensaje > getMensajes() {
+    public List<Mensaje> getMensajes() {
         return mensajeDao.findAll();
     }
 
@@ -40,19 +40,15 @@ public class MensajeServiceImpl implements MensajeService {
     private JavaMailSender javaMailSender;
 
     @Override
-    public void enviarMensaje(String to, String from, String subject, String body) {
-        try {
-            MimeMessage message = javaMailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message);
+    public void enviarMensaje(String to, String subject, String body) throws MessagingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-            helper.setTo(to);
-            helper.setFrom(from);
-            helper.setSubject(subject);
-            helper.setText(body, true);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(body, true);
 
-            javaMailSender.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        javaMailSender.send(message);
     }
+
 }

@@ -24,11 +24,11 @@ public class Mensaje implements Serializable {
     private boolean leido;
 
     @ManyToOne
-    @JoinColumn(name = "id_emisor", referencedColumnName = "id_usuario")
-    private Usuario emisor;
+    @JoinColumn(name = "id_emisor", referencedColumnName = "id_estudiante")
+    private Estudiante emisor;
 
     @ManyToOne
-    @JoinColumn(name = "id_receptor", referencedColumnName = "id_usuario")
-    private Usuario receptor;
+    @JoinColumn(name = "id_receptor", referencedColumnName = "id_personal")
+    private Personal receptor;
 
 }

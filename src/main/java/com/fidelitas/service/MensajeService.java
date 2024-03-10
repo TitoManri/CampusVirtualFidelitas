@@ -1,6 +1,7 @@
 package com.fidelitas.service;
 
 import com.fidelitas.domain.Mensaje;
+import jakarta.mail.MessagingException;
 import java.util.List;
 
 public interface MensajeService {
@@ -9,7 +10,7 @@ public interface MensajeService {
 
     public Mensaje getMensaje(Long id);
 
-    public void enviarMensaje(String from, String to, String subject, String body);
+    public void enviarMensaje(String to, String subject, String body) throws MessagingException;
 
     public void saveMensaje(Mensaje mensaje);
 }

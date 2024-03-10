@@ -11,6 +11,7 @@
         <div class="container" th:fragment="mensajeria" style="margin-top: 10px;">
             <div class="row">
                 <div class="col-md-6">
+                    <!-- mostrar contactos -->
                     <div class="card">
                         <div class="card-header">
                             <h4>Contactos</h4>
@@ -31,9 +32,7 @@
                                         <td th:text="${contador.count}"></td>
                                         <td th:text="${usuario.nombre} + ' ' + ${usuario.apellidos}"></td>
                                         <td th:text="${usuario.correo}"></td>
-                                        <td>
-                                            <!-- Agrega aquí cualquier acción relacionada con los contactos si es necesario -->
-                                        </td>
+                                        <td></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -66,11 +65,30 @@
                                 <textarea class="form-control" id="contenido" name="body" rows="3"></textarea>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-primary" type="submit">Enviar</button>
+                                <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#enviarCorreo">Enviar</button>
                             </div>
                         </form>
                     </section>
                 </div>
+                <!-- Ventana para confirmar que se envió el correo-->
+                <section>
+                    <div class="modal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div id="enviarCorreo" class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Correo enviado</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>El correo fue enviado exitosamente!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
         <script th:fragment="click">
