@@ -14,18 +14,18 @@
     <body>
         <header th:fragment="header">
             <nav>
-                <a href="#"><img class="logo-img" src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"></a>
+                <a href="@{/apartadoClases}"><img class="logo-img" src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"></a>
                 <button class="nav-link" onclick="location.href = '#'">Area Personal</button>
                 <button class="nav-link" onclick="location.href = '#'">Planes Estudio</button>
                 <button class="nav-link" onclick="location.href = '#'">Preguntas Frecuentes</button>
                 <button class="nav-link-plataforma" onclick="location.href = '#'">Contactar con soporte de plataforma</button>
-                <a th:href="@{/zonapagos}">Zona de pagos</a>
+                <a th:href="@{/apartadoClases}">Apartado Clases</a>
                 <a th:href="@{/mensaje/listado}">Mensajería</a>
             </nav>
         </header>
 
         <footer th:fragment="footer">
-            <img class="logo-img" th:src="@{/logo_fide_blanco.png}" width="124" height="100" alt="Logo Fide">
+            <img class="logo-img" th:src="@{img/logofideblanco.png}" width="124" height="100" alt="Logo Fide">
                 <div class="redes">
                     <a href="#"><img class="img-footer" th:src="@{img/facebook.png}" width="16" height="16" alt="facebook"></a>
                     <a href="#"><img class="img-footer" th:src="@{img/whatsapp.png}" width="16" height="16" alt="whatsapp"></a>
