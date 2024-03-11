@@ -1,7 +1,7 @@
 package com.fidelitas.service.impl;
 
-import com.fidelitas.dao.InicioSesionDao;
-import com.fidelitas.domain.InicioSesion;
+import com.fidelitas.dao.EstudianteDao;
+import com.fidelitas.domain.Estudiante;
 import com.fidelitas.service.InicioSesionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class InicioSesionServiceImpl implements InicioSesionService {
 
     @Autowired
-    private InicioSesionDao inicioSesionDao;
+    private EstudianteDao estudianteDao;
 
     @Override
     public boolean verificarCredenciales(String correo, String contrasena) {
         // Buscar el inicio de sesión por correo
-        InicioSesion inicioSesion = inicioSesionDao.findByCorreo(correo);
+        Estudiante estudiante = estudianteDao.findByCorreo(correo);
 
         // Verificar si el inicio de sesión existe y si la contraseña coincide
-        return inicioSesion != null && inicioSesion.getContrasena().equals(contrasena);
+        return estudiante != null && estudiante.getContrasena().equals(contrasena);
     }
 }

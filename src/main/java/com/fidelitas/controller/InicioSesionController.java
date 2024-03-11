@@ -1,7 +1,7 @@
 package com.fidelitas.controller;
 
 
-import com.fidelitas.domain.InicioSesion;
+import com.fidelitas.domain.Estudiante;
 import com.fidelitas.service.InicioSesionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class InicioSesionController {
 
     @RequestMapping({"/", "/login"})
     public String mostrarPaginaInicioSesion(Model model) {
-        model.addAttribute("inicioSesion", new InicioSesion());
+        model.addAttribute("inicioSesion", new Estudiante());
         return "inicio";
     }
     
