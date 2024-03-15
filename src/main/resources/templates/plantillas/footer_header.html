@@ -2,39 +2,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head>
-        <title>Página principal</title>
-        <meta charset="UTF-8"/>
-        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    </head>
-    <body>
-        <header th:fragment="header">
-            <nav>
-                <a href="@{/apartadoClases}"><img class="logo-img" src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"></a>
-                <button class="nav-link" onclick="location.href = '#'">Area Personal</button>
-                <button class="nav-link" onclick="location.href = '#'">Planes Estudio</button>
-                <button class="nav-link" onclick="location.href = '#'">Preguntas Frecuentes</button>
-                <button class="nav-link-plataforma" onclick="location.href = '#'">Contactar con soporte de plataforma</button>
-                <a th:href="@{/apartadoClases}">Apartado Clases</a>
-                <a th:href="@{/mensaje/listado}">Mensajería</a>
-            </nav>
-        </header>
+<head th:fragment="head">
+    <title>Página principal</title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
-        <footer th:fragment="footer">
-            <img class="logo-img" th:src="@{img/logofideblanco.png}" width="124" height="100" alt="Logo Fide">
-                <div class="redes">
-                    <a href="#"><img class="img-footer" th:src="@{img/facebook.png}" width="16" height="16" alt="facebook"></a>
-                    <a href="#"><img class="img-footer" th:src="@{img/whatsapp.png}" width="16" height="16" alt="whatsapp"></a>
-                    <a href="#"><img class="img-footer" th:src="@{img/twitter.png}" width="16" height="16" alt="twitter"></a>
-                    <a href="#"><img class="img-footer" th:src="@{img/youtube.png}" width="16" height="16" alt="youtube"></a>
-                    <a href="#"><img class="img-footer" th:src="@{img/tiktok.png}" width="16" height="16" alt="tiktok"></a>
-                    <a href="#"><img class="img-footer" th:src="@{img/linkedin.png}" width="16" height="16" alt="linkedin"></a>
+    <link rel="stylesheet" th:href="@{css/pp.css}"/>
+</head>
+<body>
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+            <a class="navbar-brand" th:href="@{/paginaprincipal}">
+                <img class="logo-img"  src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/paginaprincipal}">Area Personal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://ufidelitas.ac.cr/campanas/planes-completos/">Planes Estudio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Preguntas Frecuentes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contactar con soporte de plataforma</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/apartadoClases}">Apartado Clases</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto"> 
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="img-fluid" src="img/perfil.png" width="20" height="20" alt="Perfil">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink"> 
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" th:href="@{/listado}">Mensajes</a></li>
+                                <li><a class="dropdown-item" href="#">Calendario</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <footer class="bg-custom py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-3">
+                    <img class="img-fluid" width="124" height="100" src="img/logofideblanco.png" alt="Logo Fide">
                 </div>
-                <a class="numero" href="#">+506 2206-8600</a>
-        </footer>
-    </body>
+                <div class="col-md-6 text-center text-md-start mt-3 mt-md-0">
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/ufidelitas/"><img class="img-fluid" src="img/facebook.png" width="16" height="16" alt="Facebook"></a>
+                        <a href="https://api.whatsapp.com/send/?phone=50686068600&text&app_absent=0"><img class="img-fluid" src="img/whatsapp.png" width="16" height="16" alt="Whatsapp"></a>
+                        <a href="https://twitter.com/ufidelitas_cr"><img class="img-fluid" src="img/twitter.png" width="16" height="16" alt="Twitter"></a>
+                        <a href="https://www.youtube.com/@universidadfidelitas686"><img class="img-fluid" src="img/youtube.png" width="16" height="16" alt="Youtube"></a>
+                        <a href="https://www.tiktok.com/@ufidelitas"><img class="img-fluid" src="img/tiktok.png" width="16" height="16" alt="Tiktok"></a>
+                        <a href="https://www.linkedin.com/school/universidad-fid%C3%A9litas/"><img class="img-fluid" src="img/linkedin.png" width="16" height="16" alt="Linkedin"></a>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center text-md-end mt-3 mt-md-0">
+                    <a href="#" class="btn btn-outline-light">+506 2206-8600</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>

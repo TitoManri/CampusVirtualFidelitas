@@ -19,20 +19,20 @@ header {
     margin: 0;
     cursor: pointer;
     font-size: 16px;
-    color: #ffffff; /* Color del texto normal */
+    color: white; /* Color del texto normal */
     transition: color 0.2s; /* Agregado para una transición suave del color del texto */
 }
-.nav-link-plataforma {
-    background-color: rgb(255, 255, 255);
-    border: 3px solid rgb(255, 209, 58); /* Borde de 1 píxel amarillo */
-    border-radius: 5px;
+.nav-link-contacto {
+    background-color: navajowhite;
+    border: none;
     padding: 10px;
-    margin-left: 300px;
+    margin: 0;
     cursor: pointer;
     font-size: 16px;
-    color: #000000; /* Color del texto normal */
-    transition: color 0.2s, border 0.2s; /* Transiciones suaves para el color del texto y el borde */
+    color: white; /* Color del texto normal */
+    transition: color 0.2s; /* Agregado para una transición suave del color del texto */
 }
+
 
 .nav-link:hover, 
 .nav-link-plataforma:hover {
@@ -106,4 +106,41 @@ footer {
 
 .apartado-clases{
     color:black;
+}
+.navbar-custom {
+        background-color: #1A307C;
+    }
+.bg-custom {
+    background-color: #1A307C;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+}
+
+.dropdown-toggle:hover {
+    color: rgb(255, 209, 58);
+}
+
+.dropdown-menu {
+    background-color: #1A307C;
+    border: none;
+    margin-top: 0; /* Ajuste para eliminar el espacio entre el botón y el menú */
+}
+
+.dropdown-item {
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #1A307C;
+    color: rgb(255, 209, 58);
 }
