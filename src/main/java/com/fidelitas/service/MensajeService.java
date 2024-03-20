@@ -12,5 +12,5 @@ public interface MensajeService {
 
     public void enviarMensaje(String to, String subject, String body) throws MessagingException;
 
-    public void saveMensaje(Mensaje mensaje);
+    public void saveMensaje(String subject, String body, String from, String to);
 }
