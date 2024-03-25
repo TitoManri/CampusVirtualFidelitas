@@ -2,9 +2,12 @@ package com.fidelitas.service.impl;
 
 import com.fidelitas.dao.MensajeDao;
 import com.fidelitas.domain.Mensaje;
+import com.fidelitas.service.EstudianteService;
 import com.fidelitas.service.MensajeService;
+import com.fidelitas.service.PersonalService;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -17,6 +20,12 @@ public class MensajeServiceImpl implements MensajeService {
 
     @Autowired
     private MensajeDao mensajeDao;
+    
+    @Autowired
+    private EstudianteService estudianteService;
+    
+    @Autowired
+    private PersonalService personalService;
 
     @Override
     @Transactional(readOnly = true)
@@ -32,7 +41,14 @@ public class MensajeServiceImpl implements MensajeService {
 
     @Override
     @Transactional
-    public void saveMensaje(Mensaje mensaje) {
+    public void saveMensaje(String subject, String body, String from, String to) {
+        Mensaje mensaje = new Mensaje();
+        mensaje.setAsunto(subject);
+        mensaje.setFechaEnvio(LocalDateTime.now());
+        mensaje.setContenido(body);
+        mensaje.setLeido(false);
+        mensaje.setEmisor(estudianteService.getEstudianteByCorreo(from));
+        mensaje.setReceptor(personalService.getPersonalByCorreo(to));
         mensajeDao.save(mensaje);
     }
 
