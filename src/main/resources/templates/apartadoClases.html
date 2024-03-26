@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+          
+    <head>
+        <div th:include="~{plantillas/footer_header :: head}"></div> 
+        <link rel="stylesheet" th:href="@{css/paginaprincipal.css}"/>    
+    </head>
     
-<head th:replace="~{plantillas/footer_header :: head}">
-</head>
-
 <body>
-    
     <header th:replace="~{plantillas/footer_header :: header}"/>
 
     <section>
@@ -17,30 +18,27 @@
         <h5>Creacion de Cursos</h5>
 
         <!-- Botón para activar el modal -->
-        <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Agregar curso
-        </button>
         
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Agregar Curso</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+                    </div>  
                     <div class="modal-body">
                         <!-- Contenido del modal -->
-                        <p><form>
+                        <!-- <p><form>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                   <label for="inputnombreCurso"><h5>Nombre del Curso</h5></label>
-                                <input type="text" class="form-control" id="inputnombreCurso" placeholder="Curso">
+                                <input type="text" class="form-control" id="nombreCurso" placeholder="Curso">
                               </div>
                             </div><br>
                             <div class="form-group">
                               <label for="inputprofesorCurso"><h5>Profesor  Cargo</h5></label>
-                              <input type="text" class="form-control" id="inputprofesorCurso" placeholder="Profesor del Curso">
+                              <input type="text" class="form-control" id="profesorCurso" placeholder="Profesor del Curso">
                             </div><br>
                             <div class="dropdown">
                               </div>
@@ -76,7 +74,7 @@
                                 <br>
                             
 
-                            <!-- Botones del activo y Inactivo -->
+                            <!-- Botones del activo y Inactivo 
                             <label for="estado" class="col-sm-5 control-label"><h5>Estado</h5></label>  
                             <ul class="list-group">
                               <li class="list-group-item">
@@ -91,18 +89,118 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary custom-bg">Guardar cambios</button>
+                        <button type="button" class="btn btn-success custom-bg" onclick="agregarCursos()">Guardar cambios</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
             <hr style="width:50%;text-align:left;margin-left:0">
-    </section>
+                
+                <form class="row g-3 needs-validation">
+                    
+                    <!--Nombre del Curso -->
+                    <div class="col-md-4">
+                        <label for="validationCustom01" class="form-label">Nombre del curso</label>
+                        <input type="text" class="form-control" id="validationCustom01" value="" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                    </div>
+                    
+                    <!--Profesor que dara el curso-->
+                    <div class="col-md-6">
+                        <label for="validationCustom03" class="form-label">Profesor que dara el Curso</label>
+                        <input type="text" class="form-control" id="validationCustom03" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                    </div>
+                    
+                    <!--Horarios de Curso -->
+                    <div class="col-md-3">
+                        <h5>Horarios</h5>
+                        <select class="form-select" id="validationCustom04" required>
+                            <option selected disabled value="">Escoja un horario</option>
+                            <option>8am-11am</option>
+                            <option>9am-12am</option>
+                            <option>11am-2pm</option>
+                            <option>2pm-5pm</option>
+                            <option>6pm-9am</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid state.
+                        </div>
+                    </div>
+                    <h5>Fechas</h5>
+                    <div class="row justify-content">
+                        <div class="col-lg-4 col-sm-12 mb-3"> 
+                            <label for="startDate">Inicio</label>
+                            <input id="startDate" class="form-control" type="date" />
+                            <span id="startDateSelected"></span>
+                        </div>
+                        <div class="col-lg-4 col-sm-12 mb-3">
+                            <label for="endDate">Fin</label>
+                            <input id="endDate" class="form-control" type="date" />
+                            <span id="endDateSelected"></span>
+                        </div>
+                    </div>
+                    <br>
+                    
+                    <!--Botones del activo y Inactivo -->
+                    <label for="estado" class="col-sm-5 control-label"><h5>Estado</h5></label>  
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="activo" checked>
+                                <label class="form-check-label" for="activo">Activo</label>
+                        </li>
+                        <li class="list-group-item">
+                            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="Inactivo">
+                                <label class="form-check-label" for="Inactivo">Inactivo</label>
+                        </li>
+                    </ul>
+                        
+                        
+                    <!--Boton de Agregar curso -->
+                    <!--<section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">   
+                                    <button
+                                        type="button" 
+                                        class="btn btn-primary btn-block" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#agregarCategoria">
+                                        <i class="fas fa-plus"></i> [[#{ApartadoClases.agregar}]]
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>-->
+                </form>
+                
+                <!--Tabla de Cursos-->
+                <table class="table">
+                    <thead><tr>
+                            <th scope="col">Id Curso</th>
+                            <th scope="col">Nombre del Curso</th>
+                            <th scope="col">Profesor que dara Curso</th>
+                            <th scope="col">Horarios</th>
+                            <th scope="col">Fecha de Inicio</th>
+                            <th scope="col">Fecha de Fin</th>
+                            <th scope="col">Estado</th>
+                        </tr></thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </section>
 
-    <section></section>
+    
 
     <footer th:replace="~{plantillas/footer_header :: footer}"/>
-
+    
+    
+    <script th:src="js/apartadoClases.js"></script>
     <!-- Script de Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
