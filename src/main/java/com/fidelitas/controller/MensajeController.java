@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/mensaje")
+@RequestMapping("/")
 public class MensajeController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class MensajeController {
     public String listado(Model model) {
         var usuarios = personalService.getPersonal(); 
         model.addAttribute("usuarios", usuarios); 
-        return "/mensaje/listado";
+        return "listado";
     }
     
     @Autowired
@@ -34,7 +34,7 @@ public class MensajeController {
     public String enviarCorreo(@RequestParam String to, @RequestParam String subject, @RequestParam String body, @RequestParam String from) throws MessagingException {
         mensajeService.saveMensaje(subject, body, from, to);
         mensajeService.enviarMensaje(to, subject, body);
-        return "redirect:/mensaje/listado";
+        return "redirect:listado";
     }
 
 }

@@ -30,11 +30,6 @@ public class InicioSesionController {
     public String mostrarPaginaPrincipal() {
         return "paginaprincipal";
     }
-    
-    @GetMapping("/apartadoClases")
-    public String mostrarApartadoClases() {
-        return "apartadoClases";
-    }
 
     @PostMapping("/login")
     public String login(@RequestParam String correo, @RequestParam String contrasena, Model model) {

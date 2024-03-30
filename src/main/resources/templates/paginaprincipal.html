@@ -1,12 +1,15 @@
  <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:replace="~{plantillas/footer_header :: head}">
+    <head>
+    <div th:include="~{plantillas/footer_header :: head}"></div> 
+    <link rel="stylesheet" th:href="@{css/paginaprincipal.css}"/>    
 </head>
 <body>
     <header th:replace="~{plantillas/footer_header :: header}">
+        
     </header>
 
-    <section>
+    <section class="pagina-principal">
         <h1>Area Personal</h1>
         <h2>Resumen Curso</h2>
         <a class= "apartado-clases" href="#">Todos</a>
