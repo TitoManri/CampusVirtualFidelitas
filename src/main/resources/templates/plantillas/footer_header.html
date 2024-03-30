@@ -18,7 +18,7 @@
     <header th:fragment="header">
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" th:href="@{/paginaprincipal}">
-                <img class="logo-img"  src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide">
+                <img class="logo-img"  src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink"> 
                                 <li><a class="dropdown-item" href="#">Perfil</a></li>
                                 <li><a class="dropdown-item" th:href="@{/listado}">Mensajes</a></li>
-                                <li><a class="dropdown-item" href="#">Calendario</a></li>
+                                <li><a class="dropdown-item" href="@{/calendario/listado}">Calendario</a></li>
                                 <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
                             </ul>
                         </div>

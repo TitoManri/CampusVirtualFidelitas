@@ -1,0 +1,9 @@
+/* Estilos adicionales */
+    .calendar-header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+    }
+    .calendar-body td {
+      height: 100px;
+    }
