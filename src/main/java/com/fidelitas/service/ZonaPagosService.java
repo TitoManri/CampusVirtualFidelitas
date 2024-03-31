@@ -1,16 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.fidelitas.service;
 
 import com.fidelitas.domain.*;
-import com.fidelitas.dao.*;
+import java.util.List;
 
 /**
  *
  * @author Nigel Ocampo
  */
-public class ZonaPagosService {
+public interface ZonaPagosService {
+
+    public List<ZonaPagos> getZonaPagos();
+
+    public ZonaPagos getZonaPagosById(long id);
+
+    public void savePago(ZonaPagos pago);
     
+//    public void enviarVerificacion(Estudiante estudiante);
 }

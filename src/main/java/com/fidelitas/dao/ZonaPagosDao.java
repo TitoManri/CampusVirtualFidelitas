@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.fidelitas.dao;
 
-/**
- *
- * @author Nigel Ocampo
- */
-public class ZonaPagosDao {
-    
+import com.fidelitas.domain.Estudiante;
+import com.fidelitas.domain.Tarjeta;
+import com.fidelitas.domain.ZonaPagos;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ZonaPagosDao extends JpaRepository<ZonaPagos, Long> {
+
+    ZonaPagos findById(long id);
 }
