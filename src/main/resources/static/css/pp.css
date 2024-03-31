@@ -144,3 +144,44 @@ footer {
     background-color: #1A307C;
     color: rgb(255, 209, 58);
 }
+/* Estilos adicionales */
+    .calendar-header {
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+    }
+    .calendar-body td {
+      height: 100px;
+    }
+    
+    /* Estilo para el fondo y texto del calendario */
+        .datepicker {
+            background-color: white;
+            color: black;
+        }
+
+        /* Estilo para las celdas del calendario */
+        .datepicker table tbody td, 
+        .datepicker table tbody td.disabled, 
+        .datepicker table tbody td.disabled:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* Estilo para los días seleccionados del calendario */
+        .datepicker table tbody td.active, 
+        .datepicker table tbody td.active:hover, 
+        .datepicker table tbody td.active.disabled, 
+        .datepicker table tbody td.active.disabled:hover {
+            background-color: white;
+            color: gray;
+        }
+
+        /* Estilo para el botón del calendario */
+        .datepicker table thead tr:last-child th:hover, 
+        .datepicker table thead tr:last-child th.prev:hover, 
+        .datepicker table thead tr:last-child th.next:hover, 
+        .datepicker table thead tr:last-child th.disabled:hover {
+            background-color: white;
+            color: darkgrey;
+        }

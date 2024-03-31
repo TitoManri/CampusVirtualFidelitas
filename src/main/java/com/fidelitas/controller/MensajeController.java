@@ -19,11 +19,11 @@ public class MensajeController {
     private PersonalService personalService;
 
     
-    @GetMapping("/listado")
+    @GetMapping("/mensajeria")
     public String listado(Model model) {
         var usuarios = personalService.getPersonal(); 
         model.addAttribute("usuarios", usuarios); 
-        return "listado";
+        return "mensajeria";
     }
     
     @Autowired
