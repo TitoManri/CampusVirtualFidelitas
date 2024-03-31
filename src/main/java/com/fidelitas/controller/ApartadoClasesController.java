@@ -20,15 +20,14 @@ public class ApartadoClasesController {
     @Autowired
     private ApartadoClasesDao apartadoClasesDao;
 
-@GetMapping("/apartadoClases")
-public String mostrarApartadoClases(Model model) {
-    List<ApartadoClases> cursos = apartadoClasesDao.findAll();
-    model.addAttribute("cursos", cursos);
-    model.addAttribute("curso", new ApartadoClases());
-    return "apartadoClases";
-}
-    
-
+    @GetMapping("/apartadoClases")
+    public String mostrarApartadoClases(Model model) {
+        List<ApartadoClases> cursos = apartadoClasesDao.findAll();
+        model.addAttribute("cursos", cursos);
+        model.addAttribute("curso", new ApartadoClases());
+        return "apartadoClases";
+    }
+   
 
     @PostMapping("/apartadoClases/agregar")
     public String agregarApartadoClase(@ModelAttribute ApartadoClases apartadoClase) {

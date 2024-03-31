@@ -10,31 +10,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/calendario")
+@RequestMapping("/")
 public class CalendarioController {
 
     @Autowired
     private EventoService eventoService;
 
     //VISUALIZAR EVENTOS
-    @GetMapping("/listado")
+    @GetMapping("/calendario")
     public String mostrarListado(Model model) {
         var eventos = eventoService.getEventos();
         model.addAttribute("eventos", eventos);
-        return "/calendario/listado"; 
+        return "calendario"; 
     }
 
     //CRUD
     @PostMapping("/guardar")
     public String guardar(Evento evento) {
         eventoService.saveEvento(evento);
-        return "redirect:/calendario/listado";
+        return "redirect:calendario";
     }
 
     @GetMapping("/eliminar/{idEvento}")
     public String elimina(Evento evento) {
         eventoService.deleteEvento(evento);
-        return "redirect:/calendario/listado";
+        return "redirect:calendario";
     }
 
     @GetMapping("/modificar/{idEvento}")
