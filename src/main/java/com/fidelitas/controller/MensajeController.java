@@ -1,11 +1,8 @@
 package com.fidelitas.controller;
 
-import com.fidelitas.domain.Mensaje;
-import com.fidelitas.service.EstudianteService;
 import com.fidelitas.service.MensajeService;
 import com.fidelitas.service.PersonalService;
 import jakarta.mail.MessagingException;
-import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +17,13 @@ public class MensajeController {
 
     @Autowired
     private PersonalService personalService;
-    
-    @Autowired
-    private EstudianteService estudianteService;
 
     
-    @GetMapping("/listado")
+    @GetMapping("/mensajeria")
     public String listado(Model model) {
         var usuarios = personalService.getPersonal(); 
         model.addAttribute("usuarios", usuarios); 
-        return "listado";
+        return "mensajeria";
     }
     
     @Autowired
@@ -38,15 +32,8 @@ public class MensajeController {
     // Endpoint para enviar correo
     @PostMapping("/enviarCorreo")
     public String enviarCorreo(@RequestParam String to, @RequestParam String subject, @RequestParam String body, @RequestParam String from) throws MessagingException {
+        mensajeService.saveMensaje(subject, body, from, to);
         mensajeService.enviarMensaje(to, subject, body);
-        Mensaje mensaje = new Mensaje();
-        mensaje.setAsunto(subject);
-        mensaje.setFechaEnvio(LocalDateTime.now());
-        mensaje.setContenido(body);
-        mensaje.setLeido(false);
-        mensaje.setEmisor(estudianteService.getEstudianteByCorreo(from));
-        mensaje.setReceptor(personalService.getPersonalByCorreo(to));
-        mensajeService.saveMensaje(mensaje);
         return "redirect:listado";
     }
 

@@ -6,12 +6,13 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>Fidélitas</title>
     </head>
-    
+
     <body>
         <div class="container" th:fragment="mensajeria" style="margin-top: 10px;">
             <div class="row">
+
+                <!-- mostrar contactos -->
                 <div class="col-md-6">
-                    <!-- mostrar contactos -->
                     <div class="card">
                         <div class="card-header">
                             <h4>Contactos</h4>
@@ -22,9 +23,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Nombre Completo</th>
-
                                         <th>Correo electrónico</th>
-                                        <th></th>
+                                        <th>Cargo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,7 +32,7 @@
                                         <td th:text="${contador.count}"></td>
                                         <td th:text="${usuario.nombre} + ' ' + ${usuario.apellidos}"></td>
                                         <td th:text="${usuario.correo}"></td>
-                                        <td></td>
+                                        <td th:text="${usuario.cargo}"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -42,23 +42,26 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Sección para escribir el correo -->
                 <div class="col-md-6">
-                    <!-- Sección para escribir el correo -->
                     <section>
                         <form action="/mensaje/enviarCorreo" method="post">
                             <div class="mb-3">
-                                <label for="from" class="form-label fw-bold">DE:</label>
-                                <input type="email" class="form-control" id="from" name="from" placeholder="name@example.com" />
+                                <label for="de" class="form-label fw-bold">DE:</label>
+                                <input type="email" class="form-control" id="de" name="from" placeholder="name@example.com" />
                             </div>
-                            <!-- Agrega un identificador único al campo de entrada de "Para" -->
                             <div class="mb-3">
                                 <label for="para" class="form-label fw-bold">PARA:</label>
                                 <input type="email" class="form-control" id="para" name="to" placeholder="name@example.com" />
                             </div>
-
                             <div class="mb-3">
-                                <label for="asunto" class="form-label fw-bold">Asunto:</label>
-                                <input type="text" class="form-control" id="asunto" name="subject" placeholder="Asunto" />
+                                <label for="asunto" class="form-label fw-bold">Asunto</label>
+                                <select class="form-select" aria-label="Default select example" name="subject" id="subjectSelect">
+                                    <option value="">¿A quién desea contactar?</option>
+                                    <option>Administración</option>
+                                    <option>Soporte técnico</option>
+                                </select>
                             </div>
                             <div class="mb-3">
                                 <label for="contenido" class="form-label fw-bold">Contenido:</label>
@@ -70,36 +73,66 @@
                         </form>
                     </section>
                 </div>
-                <!-- Ventana para confirmar que se envió el correo-->
-                <section>
-                    <div class="modal" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div id="enviarCorreo" class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Correo enviado</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>El correo fue enviado exitosamente!</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
             </div>
         </div>
+
+        <!-- Ventana para confirmar que se envió el correo-->
+        <div th:fragment="confirmacion" class="modal fade" id="enviarCorreo" tabindex="-1" aria-labelledby="enviarCorreoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="enviarCorreoLabel">Correo enviado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>El correo fue enviado exitosamente!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ventana modal para mostrar errores -->
+        <div th:fragment="error" class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p th:text="${error}"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Evento de clic a las filas de la tabla -->
         <script th:fragment="click">
-            // Agregamos un evento de clic a las filas de la tabla
             document.querySelectorAll('#contactos-table tbody tr').forEach(row => {
                 row.addEventListener('click', () => {
-                    // Obtenemos el correo electrónico de la fila
+                    // Se obtiene el correo electrónico de la fila
                     const correo = row.cells[2].innerText.trim();
-                    // Asignamos el correo al campo "PARA"
+                    // Se asigna el correo al campo "PARA"
                     document.getElementById('para').value = correo;
                 });
+            });
+        </script>
+
+        <!-- Para que el select haga la función de input -->
+        <script th:fragment="toggle">
+            document.getElementById("subjectSelect").addEventListener("change", function () {
+                var selectedOption = this.options[this.selectedIndex];
+                var inputValue = selectedOption.text;
+                document.getElementById("asunto").value = inputValue;
             });
         </script>
     </body>

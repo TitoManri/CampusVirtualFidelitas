@@ -10,6 +10,7 @@
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    
 
     <link rel="stylesheet" th:href="@{css/pp.css}"/>
 </head>
@@ -17,7 +18,7 @@
     <header th:fragment="header">
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" th:href="@{/paginaprincipal}">
-                <img class="logo-img"  src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide">
+                <img class="logo-img"  src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -47,9 +48,11 @@
                                 <img class="img-fluid" src="img/perfil.png" width="20" height="20" alt="Perfil">
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink"> 
-                                <li><a class="dropdown-item" href="#">Perfil</a></li>
-                                <li><a class="dropdown-item" th:href="@{/listado}">Mensajes</a></li>
-                                <li><a class="dropdown-item" href="#">Calendario</a></li>
+                                <li><a class="dropdown-item" href="#">Perfil</a></li> <!-- Si quieren poner una direccion tienen que cambiar el href por un th:ref -->
+                                <li><a class="dropdown-item" th:href="@{/mensajeria}">Mensajes</a></li> 
+                                <li><a class="dropdown-item" th:href="@{/calendario}">Calendario</a></li>
+                                <li><a class="dropdown-item" href="#">Zona de Pagos</a></li> <!-- Si quieren poner una direccion tienen que cambiar el href por un th:ref -->
+                                <li><a class="dropdown-item" th:href="@{/login}">Cerrar Sesión</a></li> 
                             </ul>
                         </div>
                     </li>

@@ -1,24 +1,33 @@
 package com.fidelitas.domain;
 
-import com.fidelitas.dao.*;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
 
-@Data
-@Entity 
-@Table(name = "apartadoClases")
 
+@Data
+@Entity
+@Table(name = "curso")
 public class ApartadoClases implements Serializable {
-    
-    @Id  // Para el Primary Key
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_curso")
-    private String idCurso;
+    private Long id;
+
+    @Column(name = "nombre_curso")
     private String nombreCurso;
-    private String profesorCurso;
+
+    @Column(name = "id_personal")
+    private Long idPersonal;
+
     private String horario;
+
+    @Column(name = "fecha_inicio")
     private String fechaInicio;
+
+    @Column(name = "fecha_fin")
     private String fechaFin;
-    private boolean activo;
-    }
+
+    private Boolean activo;
+}
