@@ -34,7 +34,7 @@ public class MensajeController {
     public String enviarCorreo(@RequestParam String to, @RequestParam String subject, @RequestParam String body, @RequestParam String from) throws MessagingException {
         mensajeService.saveMensaje(subject, body, from, to);
         mensajeService.enviarMensaje(to, subject, body);
-        return "redirect:listado";
+        return "redirect:mensajeria";
     }
 
 }
