@@ -28,20 +28,20 @@ public class CalendarioController {
     @PostMapping("/guardar")
     public String guardar(Evento evento) {
         eventoService.saveEvento(evento);
-        return "redirect:calendario";
+        return "redirect:/calendario";
     }
 
     @GetMapping("/eliminar/{idEvento}")
     public String elimina(Evento evento) {
         eventoService.deleteEvento(evento);
-        return "redirect:calendario";
+        return "redirect:/calendario";
     }
 
     @GetMapping("/modificar/{idEvento}")
     public String modifica(Evento evento, Model model) {
         evento = eventoService.getEvento(evento);
         model.addAttribute("evento", evento);
-        return "/evento/modifica";
+        return "/modificaEvento";
     }
 
 }

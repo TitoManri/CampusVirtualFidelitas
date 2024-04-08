@@ -3,9 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-    <head>
+    <head th:replace="~{layout/plantilla :: head}">
         <title>Fidélitas</title>
-       <link rel="stylesheet" th:href="@{css/calendar.css}"/>
+        <link href="/calendario/Calendar.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -17,7 +17,6 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h2 class="text-center">Calendario</h2>
                                 <table class="table table-bordered">
                                     <thead class="calendar-header">
                                         <tr>
@@ -177,6 +176,7 @@
                                         <th>Nombre Evento</th>
                                         <th>Fecha Evento</th>
                                         <th>Descripción</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -184,6 +184,14 @@
                                         <td th:text="${evento.nombreEvento}"></td>
                                         <td th:text="${evento.fechaEvento}"></td>
                                         <td th:text="${evento.descripcionEvento}"></td>
+                                        <td>
+                                            <a th:href="@{/eliminar/}+${evento.idEvento}" class="btn btn-danger">
+                                                <i class="fas fa-trash"></i> 
+                                            </a>
+                                            <a th:href="@{/modificar/}+${evento.idEvento}" class="btn btn-success">
+                                                <i class="fas fa-pencil"></i> 
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -195,5 +203,72 @@
                 </div>
             </div>
         </div>
+
+        <!-- 2 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarEvento">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/guardar}" 
+                          th:object="${evento}"
+                          class="was-validated">
+                        <input type="hidden" name="idEvento" th:field="*{idEvento}"/>
+                        <section th:replace="~{calendario/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>Actualizar</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="nombreEvento">Nombre del evento:</label>
+                                                    <input type="text" class="form-control" name="nombreEvento" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="descripcionEvento">Descripción del evento:</label>
+                                                    <input type="text" class="form-control" name="descripcionEvento" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="fechaEvento">Fecha del evento:</label>
+                                                    <input type="date" class="form-control" name="fechaEvento" required="true"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/calendario}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/eliminar/}+${evento.idEvento}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </body>
 </html>
