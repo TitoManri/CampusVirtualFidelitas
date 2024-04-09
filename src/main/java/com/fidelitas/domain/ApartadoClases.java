@@ -18,8 +18,9 @@ public class ApartadoClases implements Serializable {
     @Column(name = "nombre_curso")
     private String nombreCurso;
 
-    @Column(name = "id_personal")
-    private Long idPersonal;
+    @ManyToOne
+    @JoinColumn(name = "id_personal") 
+    private Personal profesor;
 
     private String horario;
 
@@ -30,4 +31,10 @@ public class ApartadoClases implements Serializable {
     private String fechaFin;
 
     private Boolean activo;
+    private String descripcion;
+    private String url;
+    
+    @Column(name = "url_imagen")
+    private String urlImagen;
+    
 }
