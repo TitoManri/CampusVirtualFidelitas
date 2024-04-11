@@ -34,3 +34,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     max-width: 80%;
 }
+.nombre-clase{
+    color: rgb(26, 48, 124);
+    font-size: 50px;
+}
+
+
+.card-body {
+        align-items: center;
+        margin-top: 10px;
+        vertical-align: middle;
+    }
+.item-semana{
+        vertical-align: middle;
+        text-decoration:none;
+        color:rgb(26, 48, 124);
+        margin-left: 20px;
+        font-size: 20px;
+    }

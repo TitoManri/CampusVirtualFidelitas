@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -11,6 +11,12 @@ header {
     color: #fff;
     padding: 1px;
     text-align: right;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Ajusta la altura de tu footer */
 }
 
 
@@ -213,25 +219,36 @@ text-align:center;
 }
 
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 50px; /* Ajusta la altura de tu footer */
-}
+
 
 .text-descripcion{
      color: rgb(26, 48, 124);
 }
 .custom-box {
-            padding: 20px; /* Agrega relleno */
-            margin-bottom: 20px; /* Agrega margen inferior */
+            padding: 10px; /* Agrega relleno */
+            margin-bottom: 10px; /* Agrega margen inferior */
         }
 
         /* Centra la caja horizontalmente */
         @media (min-width: 768px) {
             .custom-box {
                 margin: 0 auto; /* Centra horizontalmente */
-                width: 75%; /* Define el ancho de la caja */
+                width: 85%; /* Define el ancho de la caja */
             }
         }
+        
+
+.custom-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Color de fondo azul */
+    color: #fff; /* Color del texto */
+    text-decoration: none; /* Quitar subrayado predeterminado */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+.custom-link:hover {
+    background-color: #0056b3; /* Cambiar color de fondo al pasar el ratón */
+}
+
