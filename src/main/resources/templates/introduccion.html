@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+
+<head>
+    <meta charset="UTF-8"/>
+    
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>   
+    <link rel="stylesheet" th:href="@{/css/pp.css}"/>
+    <link rel="stylesheet" th:href="@{/css/introduccion.css}"/>
+   
+</head>
+<body class="body-clases">
+    <header th:replace="~{plantillas/footer_header :: header}"/>
+    <div class="col-md-9 custom-box">
+    <div class="container-fluid">
+        <div class="row">
+            <br>
+            <div th:replace="~{plantillas/cursoplantilla :: tabs}"/>
+            <div class="col-md-9 custom-box">
+                <br>
+                <img class="img-banner" src="/img/acercaDelCurso.png" width="276" height="52" alt="Acerca del Curso"/>
+                <br><br>
+                <span class="text-descripcion" th:text="${descripcionCurso}"></span>
+            </div>
+        </div>
+    </div>
+        </div>
+    <footer th:replace="~{plantillas/footer_header :: footer}"/>
+</body>
+</html>
+
+
+
+
+
+

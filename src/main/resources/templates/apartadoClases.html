@@ -13,7 +13,6 @@
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <link rel="stylesheet" th:href="@{css/pp.css}"/>
 </head>
 
@@ -47,9 +46,12 @@
                         <input type="text" class="form-control" id="nombre_curso" placeholder="Nombre del Curso" th:field="*{nombreCurso}">
                     </div>
                     <div class="form-group">
-                        <label for="id_personal">ID del Personal:</label>
-                        <input type="text" class="form-control" id="id_personal" placeholder="ID del Personal" th:field="*{idPersonal}">
-                    </div>
+                    <label for="id_personal">Profesor:</label>
+                    <select name="id_personal" class="form-control">
+                        <option value="">Selecciona un profesor</option>
+                        <option th:each="profesor : ${profesores}" th:value="${profesor.idPersonal}" th:text="${profesor.nombre} + ' ' + ${profesor.apellidos}"></option>
+                    </select>
+                </div>
                     <div class="form-group">
                         <label for="horario">Horario:</label>
                         <select class="form-control" id="horario" th:field="*{horario}">
@@ -67,7 +69,15 @@
                     </div>
                     <div class="form-group">
                         <label for="fecha_fin">Fecha de Fin:</label>
-                        <input type="text" class="form-control" id="fecha_fin" placeholder="Fecha de Fin" data-provide="datepicker" th:field="*{fechaFin}">
+                        <input type="text" class="form-control" id="fecha_inicio" placeholder="Fecha de Inicio" data-provide="datepicker" th:field="*{fechaFin}">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_fin">Descripcion</label>
+                        <textarea class="form-control" id="descripcion"  th:field="*{descripcion}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_fin">Foto</label>
+                        <textarea class="form-control" id="imagen_curso"  th:field="*{urlImagen}"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="activo">Activo:</label>
@@ -76,6 +86,7 @@
                             <option value="0">No</option>
                         </select>
                     </div>
+                
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>

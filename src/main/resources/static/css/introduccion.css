@@ -1,0 +1,54 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 9, 2024, 11:14:49 AM
+    Author     : manri
+*/
+
+
+.img-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    justify-content: center; 
+    align-items: center;
+}
+
+.img-container img {
+    max-width: 100%; 
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    max-width: 80%;
+}
+.nombre-clase{
+    color: rgb(26, 48, 124);
+    font-size: 50px;
+}
+
+
+.card-body {
+        align-items: center;
+        margin-top: 10px;
+        vertical-align: middle;
+    }
+.item-semana{
+        vertical-align: middle;
+        text-decoration:none;
+        color:rgb(26, 48, 124);
+        margin-left: 20px;
+        font-size: 20px;
+    }
