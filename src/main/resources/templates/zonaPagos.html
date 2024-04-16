@@ -1,225 +1,229 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:replace="~{plantillas/footer_header :: head}">
-</head>
-<body>
-<div style="background-color: rgb(26, 48, 124); color: white;  border-color:none; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
-    <img class="img-fluid" width="124" height="100" src="img/logofideblanco.png" alt="Logo Fide">
-    <button id="btnRegresar" style="font-size: 30px; background-color: rgb(26, 48, 124); color: white; border: none;">
-        <span style="color: yellow;">&lt;</span>
-        <span style="color: lightblue;">&lt;</span>
-        <span style="color: fuchsia;">&lt;</span>
-    </button>
-</div>
-<div style="background-color: whitesmoke; color: black; padding: 30px; display: flex; justify-content: space-between; align-items: center;">
-    <h2>Zona De Pagos</h2>
-</div>
-<section style="background-color: rgb(217, 217, 217);
-             width: 1000px;
-             height: auto;
-             border: 3px solid rgb(217, 217, 217);
-             border-radius: 22px;
-             padding: 20px;
-             margin: auto;
-             display: flex;
-             flex-direction: column;" id="zonaPagos">
-    <div class="container" style="display: flex; align-items: center;">
-        <div class="profile-circle"><img src="img/perfil.png" alt="Foto de perfil" /> </div>
-        <div style="margin-left: 20px;">
-            <div>Nombre del estudiante</div>
-            <div>Nombre de la carrera</div>
-            <div>Número del cuatrimestre</div>
+    <head th:replace="~{plantillas/footer_header :: head}">
+    </head>
+    <body>
+        <div style="background-color: rgb(26, 48, 124); color: white;  border-color:none; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
+            <a class="navbar-brand" href="/paginaprincipal">
+                <img class="logo-img" src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide">
+            </a><button id="btnRegresar" style="font-size: 30px; background-color: rgb(26, 48, 124); color: white; border: none;">
+                <span style="color: yellow;">&lt;</span>
+                <span style="color: lightblue;">&lt;</span>
+                <span style="color: fuchsia;">&lt;</span>
+            </button>
         </div>
-        <div style="margin-left: auto; padding: 10px; border: 3px solid #b4b4b4; border-radius: 10px;">
-            <div>Saldo del Pagare</div>
-            <div style="text-align: center">$600,000.00</div>
+        <div style="background-color: whitesmoke; color: black; padding: 30px; display: flex; justify-content: space-between; align-items: center;">
+            <h2>Zona De Pagos</h2>
         </div>
-    </div>
-    <div style="text-align: right;">&nbsp;</div>
-    <div style="text-align: right;">&nbsp;</div>
-    <div style="text-align: right;"><button id="verEstadoCuenta" style="background-color: #b4b4b4; border-radius: 10px; color: black;">Ver estado de cuenta</button></div>
-    <div style="text-align: right;">&nbsp;</div>
-    <div style="text-align: right;">&nbsp;</div>
-    <div style="text-align: right;"><button id="pagoColegiatura" style="background-color: #b4b4b4; border-radius: 10px; color: black;">Pago de colegiatura</button></div>
-</section>
-
-<!-- Contenedor del formulario -->
-<section th:fragment="formulario" id="formulario" style="background-color: rgb(217, 217, 217);
-             width: 1000px;
-             height: auto;
-             border: 3px solid rgb(217, 217, 217);
-             border-radius: 22px;
-             padding: 20px;
-             margin: auto;
-             display: none;
-             flex-direction: column;">
-    <div class="container">
-        <form th:action="@{/zonaPagos/formularioPago}" method="POST" class="was-validated">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                <div style="flex: 1; margin-right: 10px;">
-                    <div class="mb-3">
-                        <label for="banco">Banco Perteneciente</label>
-                        <input type="text" class="form-control" name="banco" size="30" required="true"/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="numeroTarjeta">Numero de Tarjeta</label>
-                        <input type="text" class="form-control" name="numeroTarjeta" placeholder="0000 0000 0000 0000" size="16" required="true"/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fechaVencimiento">Fecha de Vencimiento</label>
-                        <input type="text" class="form-control" name="fechaVencimiento" placeholder="00/00" size="5" required="true"/>
-                    </div>
+        <section style="background-color: rgb(217, 217, 217);
+                 width: 1000px;
+                 height: auto;
+                 border: 3px solid rgb(217, 217, 217);
+                 border-radius: 22px;
+                 padding: 20px;
+                 margin: auto;
+                 display: flex;
+                 flex-direction: column;" id="zonaPagos">
+            <div class="container" style="display: flex; align-items: center;">
+                <div class="profile-circle"><img src="img/perfil.png" alt="Foto de perfil" /> </div>
+                <div style="margin-left: 20px;">
+                    <div>Nombre del estudiante</div>
+                    <div>Nombre de la carrera</div>
+                    <div>Número del cuatrimestre</div>
                 </div>
-                <div style="flex: 1;">
-                    <div class="mb-3">
-                        <label for="tipoTarjeta">Tipo de Tarjeta</label>
-                        <select class="form-select" name="tipoTarjeta">
-                            <option value="Credito">Credito</option>
-                            <option value="Debito">Debito</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="pin">Pin de Seguridad</label>
-                        <input type="text" class="form-control" name="pin" placeholder="000" size="3" required="true"/>
-                    </div>
-                    <div class="mb-3">
-                        <label for="metodoPago">Método de Pago</label>
-                        <select class="form-select" name="metodoPago">
-                            <option value="Pagaré">Pagaré</option>
-                            <option value="Contado">Contado</option>
-                        </select>
-                    </div>
+                <div style="margin-left: auto; padding: 10px; border: 3px solid #b4b4b4; border-radius: 10px;">
+                    <div>Saldo del Pagare</div>
+                    <div style="text-align: center">$600,000.00</div>
                 </div>
             </div>
-            <div class="boton-modal" style="text-align: right;">
-                <button type="button" id="realizarPago" class="btn realizarPago" style="background-color: rgb(26, 48, 124); border-radius: 10px; color: white;">Realizar Pago</button>
+            <div style="text-align: right;">&nbsp;</div>
+            <div style="text-align: right;">&nbsp;</div>
+            <div style="text-align: right;"><button id="verEstadoCuenta" style="background-color: #b4b4b4; border-radius: 10px; color: black;">Ver estado de cuenta</button></div>
+            <div style="text-align: right;">&nbsp;</div>
+            <div style="text-align: right;">&nbsp;</div>
+            <div style="text-align: right;"><button id="pagoColegiatura" style="background-color: #b4b4b4; border-radius: 10px; color: black;">Pago de colegiatura</button></div>
+        </section>
+
+        <!-- Contenedor del formulario -->
+        <section th:fragment="formulario" id="formulario" style="background-color: rgb(217, 217, 217);
+                 width: 1000px;
+                 height: auto;
+                 border: 3px solid rgb(217, 217, 217);
+                 border-radius: 22px;
+                 padding: 20px;
+                 margin: auto;
+                 display: none;
+                 flex-direction: column;">
+            <div class="container">
+                <form th:action="@{/zonaPagos/formularioPago}" method="POST" class="was-validated">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <div style="flex: 1; margin-right: 10px;">
+                            <div class="mb-3">
+                                <label for="banco">Banco Perteneciente</label>
+                                <input type="text" class="form-control" name="banco" size="30" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="numeroTarjeta">Numero de Tarjeta</label>
+                                <input type="text" class="form-control" name="numeroTarjeta" placeholder="0000 0000 0000 0000" size="16" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                                <input type="text" class="form-control" name="fechaVencimiento" placeholder="00/00" size="5" required="true"/>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="mb-3">
+                                <label for="tipoTarjeta">Tipo de Tarjeta</label>
+                                <select class="form-select" name="tipoTarjeta">
+                                    <option value="Credito">Credito</option>
+                                    <option value="Debito">Debito</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pin">Pin de Seguridad</label>
+                                <input type="text" class="form-control" name="pin" placeholder="000" size="3" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="metodoPago">Método de Pago</label>
+                                <select class="form-select" name="metodoPago">
+                                    <option value="Pagaré">Pagaré</option>
+                                    <option value="Contado">Contado</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boton-modal" style="text-align: right;">
+                        <button type="button" id="realizarPago" class="btn realizarPago" style="background-color: rgb(26, 48, 124); border-radius: 10px; color: white;">Realizar Pago</button>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</section>
+        </section>
 
-<!-- Modal para datos inválidos -->
-<div id="datosInvalidos" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>DATOS INVÁLIDOS</h2>
-        <p>Por favor, revise que todos los campos se encuentren con la información correspondiente, igualmente recuerde no dejar espacios en blanco</p>
-        <div class="btn-cerrar" style="text-align: right;">
-            <button id="cerrarModal">Revisar Datos</button>
+        <!-- Modal para datos inválidos -->
+        <div id="datosInvalidos" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>DATOS INVÁLIDOS</h2>
+                <p>Por favor, revise que todos los campos se encuentren con la información correspondiente, igualmente recuerde no dejar espacios en blanco</p>
+                <div class="btn-cerrar" style="text-align: right;">
+                    <button id="cerrarModal">Revisar Datos</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<!-- Modal para pago realizado con éxito -->
-<div id="pagoExitosoModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <h2>PAGO REALIZADO CON ÉXITO</h2>
-        <p>Por favor, revise tu correo registrado en tu perfil, hemos enviado un correo electrónico con la factura del pago de la colegiatura.</p>
-        <div style="text-align: center;">
-            <button id="continuarBtn" class="btn continuarBtn">Continuar</button>
+        <!-- Modal para pago realizado con éxito -->
+        <div id="pagoExitosoModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>PAGO REALIZADO CON ÉXITO</h2>
+                <p>Por favor, revise tu correo registrado en tu perfil, hemos enviado un correo electrónico con la factura del pago de la colegiatura.</p>
+                <div style="text-align: center;">
+                    <button id="continuarBtn" class="btn continuarBtn">Continuar</button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<section th:fragment="estadoCuenta" id="estadoCuenta" style="background-color: rgb(217, 217, 217);
-         width: 1000px;
-         height: auto;
-         border: 3px solid rgb(217, 217, 217);
-         border-radius: 22px;
-         padding: 20px;
-         margin: auto;
-         display: none;
-         flex-direction: column;">
-    <div class="container">
-        <div><img src="img/perfil.png" alt="Foto de perfil" />&nbsp;Nombre del estudiante</div>
-        <div style="margin-bottom: 20px; border: 3px solid #b4b4b4; border-radius: 10px; padding: 10px;">
-            <div>Próximo pago a realizar</div>
-            <div style="padding-left: 20px;">$120,000.00</div>
-        </div>
-        <div style="margin-bottom: 20px; border: 3px solid #b4b4b4; border-radius: 10px; padding: 10px;">
-            <div>Últimos pagos realizados</div>
-            <div style="padding-left: 20px;">$120,000.00</div>
-            <div style="padding-left: 20px;">$120,000.00</div>
-            <div style="padding-left: 20px;">$130,000.00</div>
-        </div>
-    </div>
-</section>
-<footer th:replace="~{plantillas/footer_header :: footer}"/>
+        <section th:fragment="estadoCuenta" id="estadoCuenta" style="background-color: rgb(217, 217, 217);
+                 width: 1000px;
+                 height: auto;
+                 border: 3px solid rgb(217, 217, 217);
+                 border-radius: 22px;
+                 padding: 20px;
+                 margin: auto;
+                 display: none;
+                 flex-direction: column;">
+            <div class="container">
+                <div><img src="img/perfil.png" alt="Foto de perfil" />&nbsp;Nombre del estudiante</div>
+                <div style="margin-bottom: 20px; border: 3px solid #b4b4b4; border-radius: 10px; padding: 10px;">
+                    <div>Próximo pago a realizar</div>
+                    <div style="padding-left: 20px;">$120,000.00</div>
+                </div>
+                <div style="margin-bottom: 20px; border: 3px solid #b4b4b4; border-radius: 10px; padding: 10px;">
+                    <div>Últimos pagos realizados</div>
+                    <div style="padding-left: 20px;">$120,000.00</div>
+                    <div style="padding-left: 20px;">$120,000.00</div>
+                    <div style="padding-left: 20px;">$130,000.00</div>
+                </div>
+            </div>
+        </section>
+        <footer th:replace="~{plantillas/footer_header :: footer}"/>
 
-<script>
-    // Ocultar la sección de Estado de Cuenta al cargar la página
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById("estadoCuenta").style.display = "none";
-    });
+        <script>
+            // Ocultar la sección de Estado de Cuenta al cargar la página
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById("estadoCuenta").style.display = "none";
+            });
 
-    // Contenedor del formulario
-    var formularioContainer = document.getElementById("formulario");
+            // Contenedor del formulario
+            var formularioContainer = document.getElementById("formulario");
 
-    // Función para mostrar el formulario
-    document.getElementById("pagoColegiatura").onclick = function () {
-        document.getElementById("zonaPagos").style.display = "none";
-        formularioContainer.style.display = "block";
-        document.getElementById("estadoCuenta").style.display = "none";
-    };
+            // Función para mostrar el formulario
+            document.getElementById("pagoColegiatura").onclick = function () {
+                document.getElementById("zonaPagos").style.display = "none";
+                formularioContainer.style.display = "block";
+                document.getElementById("estadoCuenta").style.display = "none";
+            };
 
-    // Función para regresar a Zona de Pagos
-    document.getElementById("btnRegresar").onclick = function () {
-        document.getElementById("zonaPagos").style.display = "block";
-        formularioContainer.style.display = "none";
-        document.getElementById("estadoCuenta").style.display = "none";
-    };
+            // Función para regresar a Zona de Pagos
+            document.getElementById("btnRegresar").onclick = function () {
+                document.getElementById("zonaPagos").style.display = "block";
+                formularioContainer.style.display = "none";
+                document.getElementById("estadoCuenta").style.display = "none";
+            };
 
-    var modal = document.getElementById("datosInvalidos");
-    var btn = document.getElementById("realizarPago");
-    var span = document.getElementsByClassName("close")[0];
-    var btnCerrarModal = document.getElementById("cerrarModal");
+            var modal = document.getElementById("datosInvalidos");
+            var btn = document.getElementById("realizarPago");
+            var span = document.getElementsByClassName("close")[0];
+            var btnCerrarModal = document.getElementById("cerrarModal");
 
-    btn.onclick = function () {
-        var camposVacios = false;
-        var campos = document.querySelectorAll('.form-control');
-        campos.forEach(function (campo) {
-            if (campo.value.trim() === '') {
-                camposVacios = true;
-                return;
+            btn.onclick = function () {
+                var camposVacios = false;
+                var campos = document.querySelectorAll('.form-control');
+                campos.forEach(function (campo) {
+                    if (campo.value.trim() === '') {
+                        camposVacios = true;
+                        return;
+                    }
+                });
+
+                if (camposVacios) {
+                    modal.style.display = "block";
+                } else {
+                    // falta
+                    document.getElementById("pagoExitosoModal").style.display = "block";
+                }
             }
-        });
 
-        if (camposVacios) {
-            modal.style.display = "block";
-        } else {
-            // falta
-            document.getElementById("pagoExitosoModal").style.display = "block";
-        }
-    }
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
 
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+            btnCerrarModal.onclick = function () {
+                modal.style.display = "none";
+            }
 
-    btnCerrarModal.onclick = function () {
-        modal.style.display = "none";
-    }
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
 
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+            document.getElementById("continuarBtn").onclick = function () {
+                document.getElementById("pagoExitosoModal").style.display = "none";
+                document.getElementById("zonaPagos").style.display = "block";
+                formularioContainer.style.display = "none";
+                document.getElementById("estadoCuenta").style.display = "none";
+            };
 
-    document.getElementById("continuarBtn").onclick = function () {
-        document.getElementById("pagoExitosoModal").style.display = "none";
-        document.getElementById("zonaPagos").style.display = "block";
-        formularioContainer.style.display = "none";
-        document.getElementById("estadoCuenta").style.display = "none";
-    };
+            // Función para mostrar el estado de cuenta
+            document.getElementById("verEstadoCuenta").onclick = function () {
+                document.getElementById("zonaPagos").style.display = "none";
+                formularioContainer.style.display = "none";
+                document.getElementById("estadoCuenta").style.display = "block";
+            };
+        </script>
 
-    // Función para mostrar el estado de cuenta
-    document.getElementById("verEstadoCuenta").onclick = function () {
-        document.getElementById("zonaPagos").style.display = "none";
-        formularioContainer.style.display = "none";
-        document.getElementById("estadoCuenta").style.display = "block";
-    };
-</script>
-
-</body>
+    </body>
 </html>
+
+
+

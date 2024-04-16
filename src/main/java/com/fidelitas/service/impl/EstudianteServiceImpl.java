@@ -3,6 +3,8 @@ package com.fidelitas.service.impl;
 import com.fidelitas.dao.EstudianteDao;
 import com.fidelitas.domain.Estudiante;
 import com.fidelitas.service.EstudianteService;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +32,73 @@ public class EstudianteServiceImpl implements EstudianteService {
     @Transactional(readOnly = true)
     public Estudiante getEstudianteByCorreo(String correo) {
         return estudianteDao.findByCorreo(correo);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ArrayList<Estudiante> findAll() {
+        return (ArrayList<Estudiante>) estudianteDao.findAll();
+    }
+
+    @Override
+    public List<Estudiante> findActive() {
+        return estudianteDao.findAllByEstado(true);
+    }
+
+    @Override
+    public List<Estudiante> findInactive() {
+        return estudianteDao.findAllByEstado(false);
+    }
+
+    @Override
+    public void save(Estudiante estudiante) {
+        try {
+            estudianteDao.save(estudiante);
+        } catch (Exception e) {
+            if (e.getMessage().contains("ConstraintViolationException")) {
+                throw new RuntimeException("El correo ya está registrado");
+            } else {
+                throw new RuntimeException("Error al guardar el estudiante");
+            }
+        }
+    }
+
+    @Override
+    public Estudiante findById(Long id) {
+        return estudianteDao.findById(id).orElse(null);
+    }
+
+    @Override
+    public void edit(Estudiante estudiante) {
+        Estudiante estudianteActual = estudianteDao.findById(estudiante.getIdEstudiante()).orElse(null);
+        if (estudianteActual == null) {
+            throw new RuntimeException("Error al editar el estudiante: El estudiante no existe");
+        }
+
+        Estudiante estudianteByCorreo = estudianteDao.findByCorreo(estudiante.getCorreo());
+
+        if (estudianteByCorreo != null && estudiante.getIdEstudiante() != estudianteByCorreo.getIdEstudiante()) {
+            throw new RuntimeException("Error al editar el estudiante: El correo ya está registrado");
+        }
+
+        estudianteActual.setNombre(estudiante.getNombre());
+        estudianteActual.setApellidos(estudiante.getApellidos());
+        estudianteActual.setContrasena(estudiante.getContrasena());
+        estudianteActual.setCorreo(estudiante.getCorreo());
+        estudianteActual.setFotoPerfil(estudiante.getFotoPerfil());
+
+        estudianteDao.save(estudianteActual);
+    }
+
+    @Override
+    public void changeStatus(Estudiante estudiante) {
+        Estudiante estudianteActual = estudianteDao.findById(estudiante.getIdEstudiante()).orElse(null);
+        if (estudianteActual == null) {
+            throw new RuntimeException("Error al cambiar el estado del estudiante: El estudiante no existe");
+        }
+
+        // cambiar el estado del estudiante 
+        estudianteActual.setEstado(!estudiante.isEstado());
+        estudianteDao.save(estudianteActual);
     }
 }

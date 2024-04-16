@@ -1,0 +1,68 @@
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-info img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.personal-info h2,
+.personal-info a {
+    display: inline-block; /* Para asegurarse de que los elementos estén en línea */
+    vertical-align: middle; /* Para alinear verticalmente los elementos */
+}
+
+
+.personal-info a::after {
+    content: url('../../icons/edit-svgrepo-com.svg');
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.resumen {
+    margin-top: 20px;
+}
+
+.summary-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.summary-section h3 {
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    margin-bottom: 10px;
+}
+
+.btn-inactivate {
+    margin-top: 20px;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-item p {
+    margin-bottom: 0;
+}
+
+.inactive {
+    /*hacer que el texto sea gris*/
+    color: #6c757d;
+}
+
+.container + .container {
+    min-height: 18rem;
+}
