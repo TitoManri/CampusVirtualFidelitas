@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
     <head th:replace="~{plantillas/footer_header :: head}">
+        <title>Zona De Pagos</title>
     </head>
     <body>
         <div style="background-color: rgb(26, 48, 124); color: white;  border-color:none; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
@@ -25,7 +26,7 @@
                  display: flex;
                  flex-direction: column;" id="zonaPagos">
             <div class="container" style="display: flex; align-items: center;">
-                <div class="profile-circle"><img src="img/perfil.png" alt="Foto de perfil" /> </div>
+                <div class="profile-circle"><img th:src="${estudiante.fotoPerfil}" alt="Foto de perfil del estudiante"></div>
                 <div style="margin-left: 20px;">
                     <div>Nombre del estudiante</div>
                     <div>Nombre de la carrera</div>
