@@ -4,10 +4,6 @@ package com.fidelitas.service;
 import com.fidelitas.domain.Tarjeta;
 import java.util.List;
 
-/**
- *
- * @author Nigel
- */
 public interface TarjetaService {
 
     public List<Tarjeta> getTarjetas();

@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head th:fragment="head">
     <title>Página principal</title>
-    <meta charset="UTF-8"/>
-    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+    <meta charset="UTF-8" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    
 
-    <link rel="stylesheet" th:href="@{css/pp.css}"/>
+
+    <link rel="stylesheet" th:href="@{css/pp.css}" />
 </head>
+
 <body>
     <header th:fragment="header">
         <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
             <a class="navbar-brand" th:href="@{/paginaprincipal}">
-                <img class="logo-img"  src="img/logofideblanco.png" width="124" height="100" alt="Logo Fide"/>
+                <img class="logo-img" src="/img/logofideblanco.png" width="124" height="100" alt="Logo Fide" />
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -29,7 +31,8 @@
                         <a class="nav-link" th:href="@{/paginaprincipal}">Area Personal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://ufidelitas.ac.cr/campanas/planes-completos/">Planes Estudio</a>
+                        <a class="nav-link" href="https://ufidelitas.ac.cr/campanas/planes-completos/">Planes
+                            Estudio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Preguntas Frecuentes</a>
@@ -41,18 +44,21 @@
                         <a class="nav-link" th:href="@{/apartadoClases}">Apartado Clases</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto"> 
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img class="img-fluid" src="img/perfil.png" width="20" height="20" alt="Perfil">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="img-fluid" src="/img/perfil.png" width="20" height="20" alt="Perfil">
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink"> 
-                                <li><a class="dropdown-item" href="#">Perfil</a></li> <!-- Si quieren poner una direccion tienen que cambiar el href por un th:ref -->
-                                <li><a class="dropdown-item" th:href="@{/mensajeria}">Mensajes</a></li> 
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <!-- Si quieren poner una direccion tienen que cambiar el href por un th:ref -->
+                                <li><a class="dropdown-item" th:href="@{/mensajeria}">Mensajes</a></li>
                                 <li><a class="dropdown-item" th:href="@{/calendario}">Calendario</a></li>
-                                <li><a class="dropdown-item" th:href="@{/zonaPagos}">Zona de Pagos</a></li> <!-- Si quieren poner una direccion tienen que cambiar el href por un th:ref -->
-                                <li><a class="dropdown-item" th:href="@{/login}">Cerrar Sesión</a></li> 
+                                <li><a class="dropdown-item" th:href="@{/zonaPagos}">Zona de Pagos</a></li>
+                                <!-- Si quieren poner una direccion tienen que cambiar el href por un th:ref -->
+                                <li><a class="dropdown-item" th:href="@{/login}">Cerrar Sesión</a></li>
                             </ul>
                         </div>
                     </li>
@@ -61,20 +67,64 @@
         </nav>
     </header>
 
-    <footer class="bg-custom py-4">
+    <!-- no es <header> porque daria problemas con el header de arriba y se llamaria ambos-->
+    <div th:fragment="admin-header" class="admin-header">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+            <a class="navbar-brand" href="/admin/administrar-estudiantes">
+                <img class="logo-img" src="/img/logofideblanco.png" width="124" height="100" alt="Logo Fide" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#admin-navbarNav"
+                aria-controls="admin-navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="admin-navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <!-- Aqui no se si quieren que la vara redireccione directamente a la pagina principal-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/administrar-estudiantes">Administrar Estudiantes</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div th:fragment="admin-header-agregar-estudiante" class="admin-header">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+            <a class="navbar-brand" href="/admin/administrar-estudiantes">
+                <img class="logo-img" src="/img/logofideblanco.png" width="124" height="100" alt="Logo Fide" />
+            </a>
+            <div class="navbar-collapse send-to-right" id="admin-navbarNav">
+                <!-- anchor a la derecha -->
+                <a class="nav-link" href="/admin/administrar-estudiantes">
+                    <span style="color: yellow; font-size: larger;">&lt;&lt;&lt;</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+
+
+
+    <footer class="bg-custom py-2 mt-auto" th:fragment="footer">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-3">
-                    <img class="img-fluid" width="124" height="100" src="img/logofideblanco.png" alt="Logo Fide">
+                    <img class="img-fluid" width="124" height="100" src="/img/logofideblanco.png" alt="Logo Fide">
                 </div>
                 <div class="col-md-6 text-center text-md-start mt-3 mt-md-0">
                     <div class="social-links">
-                        <a href="https://www.facebook.com/ufidelitas/"><img class="img-fluid" src="img/facebook.png" width="16" height="16" alt="Facebook"></a>
-                        <a href="https://api.whatsapp.com/send/?phone=50686068600&text&app_absent=0"><img class="img-fluid" src="img/whatsapp.png" width="16" height="16" alt="Whatsapp"></a>
-                        <a href="https://twitter.com/ufidelitas_cr"><img class="img-fluid" src="img/twitter.png" width="16" height="16" alt="Twitter"></a>
-                        <a href="https://www.youtube.com/@universidadfidelitas686"><img class="img-fluid" src="img/youtube.png" width="16" height="16" alt="Youtube"></a>
-                        <a href="https://www.tiktok.com/@ufidelitas"><img class="img-fluid" src="img/tiktok.png" width="16" height="16" alt="Tiktok"></a>
-                        <a href="https://www.linkedin.com/school/universidad-fid%C3%A9litas/"><img class="img-fluid" src="img/linkedin.png" width="16" height="16" alt="Linkedin"></a>
+                        <a href="https://www.facebook.com/ufidelitas/"><img class="img-fluid" src="/img/facebook.png"
+                                width="16" height="16" alt="Facebook"></a>
+                        <a href="https://api.whatsapp.com/send/?phone=50686068600&text&app_absent=0"><img
+                                class="/img-fluid" src="/img/whatsapp.png" width="16" height="16" alt="Whatsapp"></a>
+                        <a href="https://twitter.com/ufidelitas_cr"><img class="img-fluid" src="/img/twitter.png"
+                                width="16" height="16" alt="Twitter"></a>
+                        <a href="https://www.youtube.com/@universidadfidelitas686"><img class="img-fluid"
+                                src="/img/youtube.png" width="16" height="16" alt="Youtube"></a>
+                        <a href="https://www.tiktok.com/@ufidelitas"><img class="img-fluid" src="/img/tiktok.png"
+                                width="16" height="16" alt="Tiktok"></a>
+                        <a href="https://www.linkedin.com/school/universidad-fid%C3%A9litas/"><img class="img-fluid"
+                                src="/img/linkedin.png" width="16" height="16" alt="Linkedin"></a>
                     </div>
                 </div>
                 <div class="col-md-3 text-center text-md-end mt-3 mt-md-0">
@@ -83,6 +133,6 @@
             </div>
         </div>
     </footer>
-
 </body>
+
 </html>

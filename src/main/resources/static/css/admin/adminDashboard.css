@@ -1,0 +1,10 @@
+.pfp-estudiante {
+  width: 50px;
+  height: 50px;
+}
+
+.list-group {
+  max-height: 29.4rem;
+  overflow-y: auto;
+}
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" th:href="@{css/popups.css}" />
+</head>
+
+<body>
+    <div class="popup-wrapper" th:fragment="popups">
+        <div class="popup-div" th:if="${errorMessage}">
+            <input type="checkbox" id="errorToggle" class="toggle" th:checked="${errorMessage}">
+            <div class="overlay">
+                <div class="popup error">
+                    <label for="errorToggle" class="close-btn">&times;</label>
+                    <p class="message" id="errorMessage" th:text="${errorMessage}"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirmation-popup-div" th:if="${successMessage}">
+            <input type="checkbox" id="confirmationToggle" class="toggle" th:checked="${successMessage}">
+            <div class="overlay">
+                <div class="popup confirmation">
+                    <label for="confirmationToggle" class="close-btn">&times;</label>
+                    <p class="message" id="confirmationMessage" th:text="${successMessage}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
