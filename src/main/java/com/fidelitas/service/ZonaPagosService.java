@@ -3,10 +3,6 @@ package com.fidelitas.service;
 import com.fidelitas.domain.*;
 import java.util.List;
 
-/**
- *
- * @author Nigel Ocampo
- */
 public interface ZonaPagosService {
 
     public List<ZonaPagos> getZonaPagos();

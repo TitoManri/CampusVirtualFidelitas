@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+    <link rel="stylesheet" th:href="@{../css/pp.css}" />
+    <link rel="stylesheet" th:href="@{../css/admin/adminDashboard.css}" />
+</head>
+
+<body>
+    <header th:replace="~{plantillas/footer_header :: admin-header}"></header>
+
+    <div class="container">
+        <h1 class="mt-5 mb-4">ESTUDIANTES</h1>
+        <hr>
+    </div>
+
+    <!-- Botón para agregar estudiante -->
+    <div class="container mb-3">
+        <a href="/admin/agregar-estudiante" class="btn btn-success">Agregar Estudiante</a>
+    </div>
+
+    <form id="filtroForm" th:action="@{/admin/administrar-estudiantes}" method="get" class="container mb-3">
+        <label for="filtroEstudiantes" class="form-label">Filtrar Estudiantes:</label>
+        <select class="form-select" id="filtroEstudiantes" name="filtroEstudiantes">
+            <option value="activos" th:selected="${filtroEstudiantes == 'activos'}">Activos</option>
+            <option value="inactivos" th:selected="${filtroEstudiantes == 'inactivos'}">Inactivos</option>
+        </select>
+    </form>
+    <!-- cambiar a p-0 si no quiere que tenga el margen entre el borde de afuera y la lista -->
+    <div class="container rounded border border-secondary p-3">
+        <ul class="list-group">
+            <li th:each="estudiante : ${listaDeEstudiantes}" class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <img th:src="@{${estudiante.fotoPerfil}}" alt="Foto de perfil"
+                            class="rounded-circle pfp-estudiante">
+                        <span th:text="${estudiante.apellidos + ' ' + estudiante.nombre}"></span>
+                    </div>
+                    <div>
+                        <a th:href="@{'/admin/estudiantes/' + ${estudiante.getIdEstudiante()}}"
+                            class="btn btn-primary">Ver</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <footer th:replace="~{plantillas/footer_header :: footer}"></footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#filtroEstudiantes').change(function () {
+                $('#filtroForm').submit();
+            });
+        });
+    </script>
+</body>
+
+</html>
