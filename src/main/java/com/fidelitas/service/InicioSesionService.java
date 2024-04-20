@@ -7,11 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public interface InicioSesionService {
-    
-    boolean verificarCredenciales(String correo, String contrasena);
-    String obtenerElPosibleTipoDeUsuario(String correo);
-
-    Estudiante loggearEstudiante(String correo, String contrasena);
-    Admin loggearAdmin(String correo, String contrasena);
+    Admin iniciarSesionAdmin(String correo, String contrasena);
+    Estudiante iniciarSesionEstudiante(String correo, String contrasena);
 }
 

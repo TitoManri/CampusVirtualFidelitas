@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8"/>
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+     <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <link rel="stylesheet" th:href="@{/css/pp.css}"/>
+    <link rel="stylesheet" th:href="@{/css/introduccion.css}"/>
+   
+</head>
+<body>
+    <header th:replace="~{plantillas/footer_header :: header}"/>
+    <section>
+        <br>
+        <h1>Bandeja de Notificaciones</h1>
+        <hr>
+        <div class="table-container">
+            <table class="table" width="100%" bgcolor="#000" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Profesor</th>
+                        <th>Descripción</th>
+                        <th>Fecha Limite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="notificacion : ${notificaciones}">
+                        <td th:text="${notificacion.nombre}"></td>
+                        <td th:text="${notificacion.profesor.nombre} + ' ' + ${notificacion.profesor.apellidos}"></td>
+                        <td th:text="${notificacion.descripcion}"></td>
+                        <td th:text="${notificacion.fecha}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-between" sec:authorize='hasRole("ROLE_ADMIN")'>        
+            <div class="table-container mr-2">
+                <h4>Crear Notificación</h4>
+                <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Crear Notificación
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Agregar Nueva Notificación</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/notificaciones/agregar" method="post" th:object="${notificacion}">
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" th:field="*{nombre}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_personal">Profesor:</label>
+                                        <select name="id_personal" class="form-control">
+                                            <option value="">Selecciona un profesor</option>
+                                            <option th:each="profesor : ${profesores}" th:value="${profesor.idPersonal}" th:text="${profesor.nombre} + ' ' + ${profesor.apellidos}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripción:</label>
+                                        <textarea class="form-control" id="descripcion" placeholder="Descripción" th:field="*{descripcion}"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fecha_fin">Fecha Limite:</label>
+                                        <input type="text" class="form-control" id="fecha" placeholder="Fecha" data-provide="datepicker" th:field="*{fecha}">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </section>
+    <footer th:replace="~{plantillas/footer_header :: footer}"/>
+</body>
+</html>

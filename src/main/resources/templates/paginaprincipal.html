@@ -1,41 +1,42 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-        <link rel="stylesheet" th:href="@{css/pp.css}"/>
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{css/pp.css}"/>
 </head>
 <body>
-    <header th:replace="~{plantillas/footer_header :: header}">
-        
-    </header>
+    <header th:replace="~{plantillas/footer_header :: header}"></header>
 
-    <section class="pagina-principal">
+    <section class="pagina-principal custom-box"> 
         <h1>Area Personal</h1>
         <h2>Resumen Curso</h2>
         <hr>
-        <!-- Aquí se mostrarán las tarjetas de cursos -->
-<div class="container">
-    <div class="row">
-        <!-- Itera sobre cada curso y muestra una tarjeta para cada uno -->
-        <div class="col-md-4 mb-4" th:each="curso : ${cursos}">
-            <div class="card">
-                <div class="card-body">
-                   <center><img class="card-img-top" src="img/libroManzana.png" alt="Card image cap">
-                           <hr>
-                        <a class="card-title" th:text="${curso.nombreCurso}"th:href="@{/clases/{id}(id=${curso.id})}"></a></center><hr>
-                    <p class="card-text-profesor">Profesor: <span  th:text="${curso.profesor != null ? curso.profesor.nombre + ' ' + curso.profesor.apellidos : 'No asignado'}"></span></p>
-                    <p class="card-text-horario">Horario: <span th:text="${curso.horario}"></span></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4" th:each="curso : ${cursos}">
+                    <div class="card">
+                        <div class="card-body">
+                            <center>
+                                <img class="card-img-top" src="img/libroManzana.png" alt="Card image cap">
+                                <hr>
+                                <a class="card-title" th:text="${curso.nombreCurso}" th:href="@{/clases/{id}(id=${curso.id})}"></a>
+                            </center>
+                            <hr>
+                            <p class="card-text-profesor">Profesor: <span th:text="${curso.profesor != null ? curso.profesor.nombre + ' ' + curso.profesor.apellidos : 'No asignado'}"></span></p>
+                            <p class="card-text-horario">Horario: <span th:text="${curso.horario}"></span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
     </section>
 
-    <footer th:replace="~{plantillas/footer_header :: footer}"/>
+    <footer th:replace="~{plantillas/footer_header :: footer}"></footer>
 </body>
 </html>

@@ -20,4 +20,6 @@ public class Estudiante implements Serializable{
     private String contrasena;
     private String fotoPerfil;
     private boolean estado;
+    private String rol;
 }
+

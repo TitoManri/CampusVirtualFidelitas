@@ -3,9 +3,16 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Fidélitas</title>
-        <link href="/calendario/Calendar.css" rel="stylesheet" type="text/css"/>
+    <head>
+        <title>Calendario</title>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="stylesheet" th:href="@{/css/pp.css}"/>
+        <link rel="stylesheet" th:href="@{/css/calendar.css}"/>
     </head>
 
     <body>
@@ -214,7 +221,7 @@
                           th:object="${evento}"
                           class="was-validated">
                         <input type="hidden" name="idEvento" th:field="*{idEvento}"/>
-                        <section th:replace="~{calendario/fragmentos :: botonesEditar}"/>
+                        <section th:replace="~{fragmentosCalendario :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
                                 <div class="row">

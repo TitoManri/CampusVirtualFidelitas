@@ -17,5 +17,7 @@ public class Admin {
     @Basic
     @Column(name = "contrasena")
     private String contrasena;
+    @Column(name = "rol")
+    private String rol;
 }
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
     <head th:fragment="head">
         <title>Modificar</title>
@@ -14,7 +15,7 @@
     </head>
     <body>
         <header th:replace="~{plantillas/footer_header :: header}"/>
-        <section th:replace="~{calendario/fragmentos :: editarEvento}"/>
+        <section th:replace="~{fragmentosCalendario :: editarEvento}"/>
         <footer th:replace="~{plantillas/footer_header :: footer}"/>
     </body>
 </html>

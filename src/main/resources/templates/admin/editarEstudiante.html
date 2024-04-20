@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -23,8 +25,7 @@
     </div>
 
     <div class="container rounded border border-secondary p-3">
-        <form class="row g-3 needs-validation" novalidate method="post"
-            th:action="@{/admin/editar-estudiante/{id}(id=${estudiante.idEstudiante})}" th:object="${estudiante}">
+        <form class="row g-3 needs-validation" novalidate method="post" th:object="${estudiante}">
             <div class="col-md-6">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" th:value="${estudiante.nombre}" name="nombre"
