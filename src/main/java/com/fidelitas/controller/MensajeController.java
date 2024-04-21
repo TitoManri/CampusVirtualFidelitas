@@ -22,7 +22,7 @@ public class MensajeController {
     @GetMapping("/mensajeria")
     public String listado(Model model) {
         var usuarios = personalService.getPersonal(); 
-        model.addAttribute("usuarios", usuarios); 
+        model.addAttribute("usuarios", usuarios);  //Obtiene el personal de la base de datos
         return "mensajeria";
     }
     
@@ -32,8 +32,8 @@ public class MensajeController {
     // Endpoint para enviar correo
     @PostMapping("/enviarCorreo")
     public String enviarCorreo(@RequestParam String to, @RequestParam String subject, @RequestParam String body, @RequestParam String from) throws MessagingException {
-        mensajeService.saveMensaje(subject, body, from, to);
-        mensajeService.enviarMensaje(to, subject, body);
+        mensajeService.saveMensaje(subject, body, from, to); //Guarda el mensaje en la base de datos
+        mensajeService.enviarMensaje(to, subject, body); //Se utiliza para enviar el correo
         return "redirect:mensajeria";
     }
 

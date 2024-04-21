@@ -25,12 +25,12 @@ public class PaginaPrincipalController {
     
     @GetMapping("/paginaprincipal")
     public String mostrarPaginaPrincipal(Model model) {
-        List<ApartadoClases> cursos = apartadoClasesDao.findAll();
-        List<Personal> profesores = personalDao.findAll();
+        List<ApartadoClases> cursos = apartadoClasesDao.findAll();//Lista para cursos 
+        List<Personal> profesores = personalDao.findAll(); //Lista para profesores
         model.addAttribute("cursos", cursos);
-        model.addAttribute("curso", new ApartadoClases());
+        model.addAttribute("curso", new ApartadoClases());// Crea un nuevo objeto para leer todos los datos de la base de datos y los guarda en un list
         model.addAttribute("profesor", profesores); 
-        model.addAttribute("profesores", new Personal());
+        model.addAttribute("profesores", new Personal()); // Crea un nuevo objeto para leer todos los datos de la base de datos y los guarda en un list
 
         // Obtener el objeto UserDetails
         var userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
