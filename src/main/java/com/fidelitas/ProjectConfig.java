@@ -73,12 +73,8 @@ public class ProjectConfig implements WebMvcConfigurer {
         http
             .authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/templates/admin/**","/templates/admin/apartadoClases/agregar").hasRole("ADMIN")
-                .requestMatchers("/templates/**","/templates/calendario", "/templates/introduccion","/templates/login",
-                        "/templates/mensajeria","/templates/modificaEvento","/templates/paginaprincipal","/templates/semana",
-                        "/templates/zonaPagos","/templates/cursoplantilla","/templates/notificaciones",
-                        "/templates/fragmentosCalendario", 
-                        "/templates/layout/**","/templates/layout/plantilla", //Carpeta Layout
-                        "/templates/fragmentosMensajeria","/templates/plantillas/**","/templates/plantillas/footer_header","/templates/plantillas/popups") //Carpeta Plantillas
+                .requestMatchers("/templates/**",
+                        "/templates/plantillas/**","/templates/plantillas/footer_header","/templates/plantillas/popups") //Carpeta Plantillas
                     .hasAnyRole("ADMIN", "ESTUDIANTE")
                 .anyRequest().authenticated())
             .formLogin((form) -> form
