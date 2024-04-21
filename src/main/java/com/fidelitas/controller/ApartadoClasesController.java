@@ -29,7 +29,6 @@ public class ApartadoClasesController {
     private PersonalDao personalDao;
 
     @GetMapping("/admin/apartadoClases")
-    @PreAuthorize("hasRole('ADMIN')")
     public String mostrarApartadoClases(Model model) {
         List<ApartadoClases> cursos = apartadoClasesDao.findAll();
         List<Personal> profesores = personalDao.findAll();
