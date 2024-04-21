@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-    <title>Página Principal</title>
+    <title>[[#{footerHeader.paginaPrincipal}]]</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -16,8 +16,8 @@
     <header th:replace="~{plantillas/footer_header :: header}"></header>
 
     <section class="pagina-principal custom-box"> 
-        <h1>Area Personal</h1>
-        <h2>Resumen Curso</h2>
+        <h1>[[#{paginaPrincipal.areaPersonal}]]</h1>
+        <h2>[[#{paginaPrincipal.resumenCurso}]]</h2>
         <hr>
         <div class="container">
             <div class="row">
@@ -30,8 +30,8 @@
                                 <a class="card-title" th:text="${curso.nombreCurso}" th:href="@{/clases/{id}(id=${curso.id})}"></a>
                             </center>
                             <hr>
-                            <p class="card-text-profesor">Profesor: <span th:text="${curso.profesor != null ? curso.profesor.nombre + ' ' + curso.profesor.apellidos : 'No asignado'}"></span></p>
-                            <p class="card-text-horario">Horario: <span th:text="${curso.horario}"></span></p>
+                            <p class="card-text-profesor">[[#{paginaPrincipal.profesor}]] <span th:text="${curso.profesor != null ? curso.profesor.nombre + ' ' + curso.profesor.apellidos : 'No asignado'}"></span></p>
+                            <p class="card-text-horario">[[#{paginaPrincipal.horario}]] <span th:text="${curso.horario}"></span></p>
                         </div>
                     </div>
                 </div>

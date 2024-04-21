@@ -18,16 +18,16 @@
                     <h1 class="nombre-clase" th:text="${nombreCurso}"></h1>
                     <ul class="nav nav-tabs tabs">
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{'/clases/'+ ${clase.id}}">Curso</a>
+                            <a class="nav-link" th:href="@{'/clases/'+ ${clase.id}}">[[#{cursoPlantilla.curso}]]</a>
                         </li>
                     </ul>
                     <br>
                 <ul class="nav nav-tabs tabs">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{'/clases/'+ ${clase.id}}">Introducción</a>
+                        <a class="nav-link" th:href="@{'/clases/'+ ${clase.id}}">[[#{cursoPlantilla.intro}]]</a>
                     </li>
                     <li class="nav-item" th:each="semana : ${#numbers.sequence(1, 15)}">
-                        <a class="nav-link " th:href="@{'/clases/' + ${clase.id} + '/semana/' + ${semana}}">Semana <span th:text="${semana}"></span></a>
+                        <a class="nav-link " th:href="@{'/clases/' + ${clase.id} + '/semana/' + ${semana}}">[[#{cursoPlantilla.semana}]] <span th:text="${semana}"></span></a>
                     </li>
                 </ul>
                     <div class="img-container">
