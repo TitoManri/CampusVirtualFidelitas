@@ -109,4 +109,19 @@ public class EstudianteServiceImpl implements EstudianteService {
         estudianteActual.setEstado(!estudiante.isEstado());
         estudianteDao.save(estudianteActual);
     }
+
+    @Override
+    public Estudiante getEstudianteFromUserDetails(Object userDetails) {
+        String correo = trimCorreo(userDetails.toString());
+        return estudianteDao.findByCorreo(correo);
+    }
+
+    private String trimCorreo(String text) {
+        // Buscar el índice de inicio del correo electrónico
+        int startIndex = text.indexOf("Username=") + "Username=".length();
+        // Buscar el índice de fin del correo electrónico
+        int endIndex = text.indexOf(",", startIndex);
+        // Extraer el correo electrónico
+        return text.substring(startIndex, endIndex);
+    }
 }
