@@ -1,11 +1,8 @@
 package com.fidelitas.controller;
 
-import com.fidelitas.domain.Admin;
 import com.fidelitas.domain.Estudiante;
-import com.fidelitas.service.impl.AdminServiceImpl;
 import com.fidelitas.service.impl.EstudianteServiceImpl;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +21,11 @@ public class AdminController {
     }
 
     // Servicios necesarios
-    private final AdminServiceImpl adminService;
     private final EstudianteServiceImpl estudianteService;
     private final HttpSession httpSession;
 
     // Constructor que inyecta los servicios y la sesión HTTP
-    public AdminController(AdminServiceImpl adminService, EstudianteServiceImpl estudianteService, HttpSession httpSession) {
-        this.adminService = adminService;
+    public AdminController(EstudianteServiceImpl estudianteService, HttpSession httpSession) {
         this.estudianteService = estudianteService;
         this.httpSession = httpSession;
     }
