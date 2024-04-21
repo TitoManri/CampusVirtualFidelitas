@@ -83,7 +83,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .defaultSuccessUrl("/paginaprincipal")) // Redirige a /ruta después del inicio de sesión exitoso
             .logout((logout) -> logout
                     .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/login")
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID")
             )
