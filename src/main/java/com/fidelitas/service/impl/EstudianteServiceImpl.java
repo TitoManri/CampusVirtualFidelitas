@@ -89,9 +89,11 @@ public class EstudianteServiceImpl implements EstudianteService {
 
         estudianteActual.setNombre(estudiante.getNombre());
         estudianteActual.setApellidos(estudiante.getApellidos());
-        estudianteActual.setContrasena(estudiante.getContrasena());
         estudianteActual.setCorreo(estudiante.getCorreo());
         estudianteActual.setFotoPerfil(estudiante.getFotoPerfil());
+
+        String BCryptPassword = new BCryptPasswordEncoder().encode(estudiante.getContrasena());
+        estudiante.setContrasena(BCryptPassword);
 
         estudianteDao.save(estudianteActual);
     }
