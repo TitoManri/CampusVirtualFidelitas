@@ -9,6 +9,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @Service
 public class EstudianteServiceImpl implements EstudianteService {
@@ -53,6 +55,10 @@ public class EstudianteServiceImpl implements EstudianteService {
     @Override
     public void save(Estudiante estudiante) {
         try {
+            String BCryptPassword = new BCryptPasswordEncoder().encode(estudiante.getContrasena());
+            estudiante.setContrasena(BCryptPassword);
+
+            estudiante.setRol("ESTUDIANTE");
             estudianteDao.save(estudiante);
         } catch (Exception e) {
             if (e.getMessage().contains("ConstraintViolationException")) {
@@ -83,10 +89,12 @@ public class EstudianteServiceImpl implements EstudianteService {
 
         estudianteActual.setNombre(estudiante.getNombre());
         estudianteActual.setApellidos(estudiante.getApellidos());
-        estudianteActual.setContrasena(estudiante.getContrasena());
         estudianteActual.setCorreo(estudiante.getCorreo());
         estudianteActual.setFotoPerfil(estudiante.getFotoPerfil());
 
+        String BCryptPassword = new BCryptPasswordEncoder().encode(estudiante.getContrasena());
+        estudianteActual.setContrasena(BCryptPassword);
+        
         estudianteDao.save(estudianteActual);
     }
 

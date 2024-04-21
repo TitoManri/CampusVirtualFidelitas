@@ -76,14 +76,19 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .requestMatchers("/templates/**",
                         "/templates/plantillas/**","/templates/plantillas/footer_header","/templates/plantillas/popups") //Carpeta Plantillas
                     .hasAnyRole("ADMIN", "ESTUDIANTE")
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated())
             .formLogin((form) -> form
                 .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/paginaprincipal")) // Redirige a /ruta después del inicio de sesión exitoso
-            .logout((logout) -> logout.permitAll())
+            .logout((logout) -> logout
+                    .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+            )
             .userDetailsService(userDetailsService)
             .csrf().disable();
-
         return http.build();
     }
 

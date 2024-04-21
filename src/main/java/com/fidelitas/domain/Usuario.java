@@ -44,5 +44,8 @@ public class Usuario {
     
     @OneToMany
     @JoinColumn(name="id_usuario")
-    private List<Rol> roles;    
+    private List<Rol> roles;
+
+    @Column(name = "id_estudiante_asociado", nullable = false)
+    private Long idEstudianteAsociado;
 }
