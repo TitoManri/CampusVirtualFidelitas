@@ -93,8 +93,8 @@ public class EstudianteServiceImpl implements EstudianteService {
         estudianteActual.setFotoPerfil(estudiante.getFotoPerfil());
 
         String BCryptPassword = new BCryptPasswordEncoder().encode(estudiante.getContrasena());
-        estudiante.setContrasena(BCryptPassword);
-
+        estudianteActual.setContrasena(BCryptPassword);
+        
         estudianteDao.save(estudianteActual);
     }
 
