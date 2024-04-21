@@ -19,28 +19,28 @@ public class CalendarioController {
     //VISUALIZAR EVENTOS
     @GetMapping("/calendario")
     public String mostrarListado(Model model) {
-        var eventos = eventoService.getEventos();
-        model.addAttribute("eventos", eventos);
+        var eventos = eventoService.getEventos(); 
+        model.addAttribute("eventos", eventos); //Obtiene eventos de la base de datos
         return "calendario"; 
     }
 
     //CRUD
     @PostMapping("/guardar")
     public String guardar(Evento evento) {
-        eventoService.saveEvento(evento);
+        eventoService.saveEvento(evento); //Se guarda el evento en la base de datos
         return "redirect:/calendario";
     }
 
     @GetMapping("/eliminar/{idEvento}")
     public String elimina(Evento evento) {
-        eventoService.deleteEvento(evento);
+        eventoService.deleteEvento(evento); //Se elimina el evento de la base de datos
         return "redirect:/calendario";
     }
 
     @GetMapping("/modificar/{idEvento}")
     public String modifica(Evento evento, Model model) {
         evento = eventoService.getEvento(evento);
-        model.addAttribute("evento", evento);
+        model.addAttribute("evento", evento); //Obtiene el evento de la base de daos y lo modifica
         return "/modificaEvento";
     }
 

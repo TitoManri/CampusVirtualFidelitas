@@ -30,11 +30,11 @@ public class ApartadoClasesController {
 
     @GetMapping("/admin/apartadoClases")
     public String mostrarApartadoClases(Model model) {
-        List<ApartadoClases> cursos = apartadoClasesDao.findAll();
-        List<Personal> profesores = personalDao.findAll();
-        model.addAttribute("cursos", cursos);
-        model.addAttribute("curso", new ApartadoClases());
-        model.addAttribute("profesores", profesores); 
+        List<ApartadoClases> cursos = apartadoClasesDao.findAll(); //Lista para cursos
+        List<Personal> profesores = personalDao.findAll(); //Lista poara profesores
+        model.addAttribute("cursos", cursos); 
+        model.addAttribute("curso", new ApartadoClases()); // Crea un nuevo objeto para leer todos los datos de la base de datos y los guarda en un list
+        model.addAttribute("profesores", profesores); // Crea un nuevo objeto para leer todos los datos de la base de datos y los guarda en un list
         return "/admin/apartadoClases";
     }
 
@@ -43,10 +43,11 @@ public class ApartadoClasesController {
     @GetMapping("/clases/{id}")
     public String verClase(@PathVariable Long id, Model model) {
         ApartadoClases clase = apartadoClasesDao.findById(id).orElse(null);
-        if (clase != null) {
-            model.addAttribute("clase", clase);
-            model.addAttribute("nombreCurso", clase.getNombreCurso());
-            model.addAttribute("descripcionCurso", clase.getDescripcion());
+        if (clase != null) { //Si se encuantra el objeto con la informacion de la base de datos pasa sino da error
+            model.addAttribute("clase", clase); //Saca la informacion de clase o se de los cursos
+            model.addAttribute("nombreCurso", clase.getNombreCurso()); //Obtiene el nombre del curso
+            model.addAttribute("descripcionCurso", clase.getDescripcion()); //Obtiene la descripcion del curso
+            
             return "introduccion";
         } else {
             return "error";
@@ -56,11 +57,11 @@ public class ApartadoClasesController {
     
     @GetMapping("/clases/{id}/semana/{numeroSemana}")
     public String verSemanas(@PathVariable Long id, @PathVariable int numeroSemana, Model model) {
-        ApartadoClases clase = apartadoClasesDao.findById(id).get();
-        model.addAttribute("clase", clase);
-        String nombreCurso = clase.getNombreCurso();
-        model.addAttribute("nombreCurso", nombreCurso);
-        model.addAttribute("numeroSemana", numeroSemana);
+        ApartadoClases clase = apartadoClasesDao.findById(id).get(); //Obtiene el id del curso
+        model.addAttribute("clase", clase); //Obtiene la informacion de la clase
+        String nombreCurso = clase.getNombreCurso(); //Obtiene el nombre del curso 
+        model.addAttribute("nombreCurso", nombreCurso); //Obtiene el nombre del curso para usarlo con thymeleaf
+        model.addAttribute("numeroSemana", numeroSemana); //Obtiene el numero de la semana (de 1 a 15)
         return "semana";
     }
 
@@ -68,16 +69,16 @@ public class ApartadoClasesController {
 
 
     @PostMapping("/admin/apartadoClases/agregar")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")//Este metodo solo lo pueden accesar los administradores
     public String agregarApartadoClase(@ModelAttribute ApartadoClases apartadoClase, @RequestParam("id_personal") Long idPersonal) {
-        Personal profesor = personalDao.findById(idPersonal).orElse(null);
-        if (profesor != null) {
-            apartadoClase.setProfesor(profesor);
-            apartadoClasesDao.save(apartadoClase);
-            Long id = apartadoClase.getId();
-            String url = "/clases/" + id;
-            apartadoClase.setUrl(url); 
-            apartadoClasesDao.save(apartadoClase);
+        Personal profesor = personalDao.findById(idPersonal).orElse(null); //Se encuenta el id del profesor o sino se pone en null
+        if (profesor != null) {  //Si se encuantra el objeto con la informacion de la base de datos pasa sino da error
+            apartadoClase.setProfesor(profesor); //Obtiene el id del profesor
+            apartadoClasesDao.save(apartadoClase); //Se guarda la clase
+            Long id = apartadoClase.getId(); //Se obtiene el id del curso
+            String url = "/clases/" + id; //Se genera una URL automaticamente para cada curso creado
+            apartadoClase.setUrl(url); //Se guarda el url en la base de datos
+            apartadoClasesDao.save(apartadoClase); //Se guarda otra vez el curso
             return "redirect:/admin/apartadoClases";
         } else {
             return "error";
