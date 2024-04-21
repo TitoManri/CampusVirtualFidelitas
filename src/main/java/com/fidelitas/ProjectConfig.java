@@ -76,6 +76,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .requestMatchers("/templates/**",
                         "/templates/plantillas/**","/templates/plantillas/footer_header","/templates/plantillas/popups") //Carpeta Plantillas
                     .hasAnyRole("ADMIN", "ESTUDIANTE")
+                    .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated())
             .formLogin((form) -> form
                 .loginPage("/login").permitAll()
@@ -83,7 +84,6 @@ public class ProjectConfig implements WebMvcConfigurer {
             .logout((logout) -> logout.permitAll())
             .userDetailsService(userDetailsService)
             .csrf().disable();
-
         return http.build();
     }
 
