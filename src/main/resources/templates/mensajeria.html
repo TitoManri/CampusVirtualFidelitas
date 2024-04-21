@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:fragment="head">
         <title>Mensajería</title>
         <meta charset="UTF-8"/>
@@ -14,9 +14,9 @@
     </head>
     <body> 
         <header th:replace="~{plantillas/footer_header :: header}"/>
-        <div th:replace="~{mensaje/fragmentos :: mensajeria}"/>
-        <script th:replace="~{mensaje/fragmentos :: click}"/>
-        <script th:replace="~{mensaje/fragmentos :: toggle}"/>
+        <div th:replace="~{fragmentosMensajeria :: mensajeria}"/>
+        <script th:replace="~{fragmentosMensajeria :: click}"/>
+        <script th:replace="~{fragmentosMensajeria :: toggle}"/>
         <footer th:replace="~{plantillas/footer_header :: footer}"/>
     </body>
 

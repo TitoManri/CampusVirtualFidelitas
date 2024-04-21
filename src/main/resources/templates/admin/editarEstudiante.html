@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -15,16 +17,14 @@
 </head>
 
 <body>
-    <header th:replace="~{plantillas/footer_header :: admin-header}"></header>
-
+<header th:replace="~{plantillas/footer_header :: header}"/>
     <div class="container">
         <h1 class="mt-5 mb-4">EDITAR ESTUDIANTE</h1>
         <hr>
     </div>
 
     <div class="container rounded border border-secondary p-3">
-        <form class="row g-3 needs-validation" novalidate method="post"
-            th:action="@{/admin/editar-estudiante/{id}(id=${estudiante.idEstudiante})}" th:object="${estudiante}">
+        <form class="row g-3 needs-validation" novalidate method="post" th:object="${estudiante}">
             <div class="col-md-6">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" th:value="${estudiante.nombre}" name="nombre"
@@ -64,7 +64,8 @@
                     Por favor, proporciona una URL válida.
                 </div>
             </div>
-            <div class="text-end">
+            <div class="d-flex justify-content-between">
+                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">Volver</a>
                 <button class="btn btn-primary" type="submit">Actualizar Estudiante</button>
             </div>
         </form>
@@ -72,7 +73,7 @@
 
     <div th:replace="~{plantillas/popups :: popups}"></div>
 
-    <footer th:replace="~{plantillas/footer_header :: footer}"></footer>
+<footer th:replace="~{plantillas/footer_header :: footer}"/>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8"/>
-    
+    <title>Introduccion</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -19,7 +20,7 @@
     <div class="container-fluid">
         <div class="row">
             <br>
-            <div th:replace="~{plantillas/cursoplantilla :: tabs}"/>
+            <div th:replace="~{cursoplantilla :: tabs}"/>
             <div class="col-md-9 custom-box">
                 <br>
                 <img class="img-banner" src="/img/acercaDelCurso.png" width="276" height="52" alt="Acerca del Curso"/>

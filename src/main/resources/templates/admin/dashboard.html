@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +17,7 @@
 </head>
 
 <body>
-    <header th:replace="~{plantillas/footer_header :: admin-header}"></header>
+    <header th:replace="~{plantillas/footer_header :: header}"></header>
 
     <div class="container">
         <h1 class="mt-5 mb-4">ESTUDIANTES</h1>
@@ -27,7 +29,7 @@
         <a href="/admin/agregar-estudiante" class="btn btn-success">Agregar Estudiante</a>
     </div>
 
-    <form id="filtroForm" th:action="@{/admin/administrar-estudiantes}" method="get" class="container mb-3">
+    <form id="filtroForm" method="get" class="container mb-3">
         <label for="filtroEstudiantes" class="form-label">Filtrar Estudiantes:</label>
         <select class="form-select" id="filtroEstudiantes" name="filtroEstudiantes">
             <option value="activos" th:selected="${filtroEstudiantes == 'activos'}">Activos</option>

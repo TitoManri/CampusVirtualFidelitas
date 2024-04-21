@@ -10,6 +10,7 @@ import com.fidelitas.domain.ApartadoClases;
 import com.fidelitas.domain.Personal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,14 +28,15 @@ public class ApartadoClasesController {
     @Autowired
     private PersonalDao personalDao;
 
-    @GetMapping("/apartadoClases")
+    @GetMapping("/admin/apartadoClases")
+    @PreAuthorize("hasRole('ADMIN')")
     public String mostrarApartadoClases(Model model) {
         List<ApartadoClases> cursos = apartadoClasesDao.findAll();
         List<Personal> profesores = personalDao.findAll();
         model.addAttribute("cursos", cursos);
         model.addAttribute("curso", new ApartadoClases());
         model.addAttribute("profesores", profesores); 
-        return "apartadoClases";
+        return "/admin/apartadoClases";
     }
 
    
@@ -66,7 +68,8 @@ public class ApartadoClasesController {
 
 
 
-    @PostMapping("/apartadoClases/agregar")
+    @PostMapping("/admin/apartadoClases/agregar")
+    @PreAuthorize("hasRole('ADMIN')")
     public String agregarApartadoClase(@ModelAttribute ApartadoClases apartadoClase, @RequestParam("id_personal") Long idPersonal) {
         Personal profesor = personalDao.findById(idPersonal).orElse(null);
         if (profesor != null) {
@@ -76,7 +79,7 @@ public class ApartadoClasesController {
             String url = "/clases/" + id;
             apartadoClase.setUrl(url); 
             apartadoClasesDao.save(apartadoClase);
-            return "redirect:" + url;
+            return "redirect:/admin/apartadoClases";
         } else {
             return "error";
         }
