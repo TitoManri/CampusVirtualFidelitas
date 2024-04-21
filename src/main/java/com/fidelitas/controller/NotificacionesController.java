@@ -43,4 +43,30 @@ public class NotificacionesController {
             return "error";
         }
     }
+    
+     // Método para manejar la solicitud POST del formulario de edición de notificación
+    @PostMapping("/editar-notificacion")
+    public String editarNotificacion(@RequestParam("id") Long id,@RequestParam("nombre") String nombre,@RequestParam("descripcion") String descripcion) {
+        // Busca la notificación por su ID
+        Notificaciones notificaciones = notificacionesDao.findById(id).orElse(null);
+        
+        // Verifica si la notificación existe y actualiza sus campos
+        if (notificaciones != null) {
+            notificaciones.setNombre(nombre);
+            notificaciones.setDescripcion(descripcion);
+            // Actualiza la notificación en la base de datos
+            notificacionesDao.save(notificaciones);
+        }
+        
+        // Redirige de nuevo a la página actual
+        return "redirect:/notificaciones";
+    }
+    // Método para eliminar una notificación
+        @PostMapping("/eliminar-notificacion")
+        public String eliminarNotificacion(@RequestParam("id") Long id) {
+            notificacionesDao.deleteById(id);
+            return "redirect:/notificaciones"; // Redirigir a la página de notificaciones después de eliminar
+        }
+
+    
 }
