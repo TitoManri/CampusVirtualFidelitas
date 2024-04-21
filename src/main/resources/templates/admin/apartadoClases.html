@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-    <title>Crear Clase</title>
+    <title>[[#{apartadoClases.crearClase}]]</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -20,74 +20,74 @@
 <header th:replace="~{plantillas/footer_header :: header}"/>
 <section>
     <div>
-        <h2>Agregar Cursos</h2>
+        <h2>[[#{apartadoClases.agregarTitulo}]]</h2>
     </div>
     
         <hr>
-            <h5>Creación de Cursos</h5>
+            <h5>[[#{apartadoClases.crear}]]</h5>
 
     <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Agregar curso
+        [[#{apartadoClases.agregar}]]
     </button>
     
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Nuevo Curso</h5>
+                <h5 class="modal-title" id="exampleModalLabel">[[#{apartadoClases.agregarNuevoTitulo}]]</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             <form action="/admin/apartadoClases/agregar" method="post" th:object="${curso}">
                     <div class="form-group">
-                        <label for="nombre_curso">Nombre del Curso:</label>
+                        <label for="nombre_curso">[[#{apartadoClases.nombreCurso}]]</label>
                         <input type="text" class="form-control" id="nombre_curso" placeholder="Nombre del Curso" th:field="*{nombreCurso}">
                     </div>
                     <div class="form-group">
-                    <label for="id_personal">Profesor:</label>
+                    <label for="id_personal">[[#{apartadoClases.profesor}]]</label>
                     <select name="id_personal" class="form-control">
-                        <option value="">Selecciona un profesor</option>
+                        <option value="">[[#{apartadoClases.seleccionProfesor}]]</option>
                         <option th:each="profesor : ${profesores}" th:value="${profesor.idPersonal}" th:text="${profesor.nombre} + ' ' + ${profesor.apellidos}"></option>
                     </select>
                 </div>
                     <div class="form-group">
-                        <label for="horario">Horario:</label>
+                        <label for="horario">[[#{apartadoClases.horario}]]</label>
                         <select class="form-control" id="horario" th:field="*{horario}">
-                            <option value="">-Seleccione el Horario-</option>
-                            <option value="8am-11am">8am-11am</option>
-                            <option value="9am-12am">9am-12am</option>
-                            <option value="11am-2pm">11am-2pm</option>
-                            <option value="2pm-5pm">2pm-5pm</option>
-                            <option value="6pm-9am">6pm-9am</option>
+                            <option value="">[[#{apartadoClases.seleccionHorario}]]</option>
+                            <option value="8am-11am">[[#{apartadoClases.811}]]</option>
+                            <option value="9am-12am">[[#{apartadoClases.912}]]</option>
+                            <option value="11am-2pm">[[#{apartadoClases.112}]]</option>
+                            <option value="2pm-5pm">[[#{apartadoClases.25}]]</option>
+                            <option value="6pm-9am">[[#{apartadoClases.69}]]</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="fecha_inicio">Fecha de Inicio:</label>
+                        <label for="fecha_inicio">[[#{apartadoClases.fechaInicio}]]</label>
                         <input type="text" class="form-control" id="fecha_inicio" placeholder="Fecha de Inicio" data-provide="datepicker" th:field="*{fechaInicio}">
                     </div>
                     <div class="form-group">
-                        <label for="fecha_fin">Fecha de Fin:</label>
+                        <label for="fecha_fin">[[#{apartadoClases.fechaFin}]]</label>
                         <input type="text" class="form-control" id="fecha_inicio" placeholder="Fecha de Inicio" data-provide="datepicker" th:field="*{fechaFin}">
                     </div>
                     <div class="form-group">
-                        <label for="fecha_fin">Descripcion</label>
+                        <label for="fecha_fin">[[#{apartadoClases.descripcion}]]</label>
                         <textarea class="form-control" id="descripcion"  th:field="*{descripcion}"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="fecha_fin">Foto</label>
+                        <label for="fecha_fin">[[#{apartadoClases.foto}]]</label>
                         <textarea class="form-control" id="imagen_curso"  th:field="*{urlImagen}"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="activo">Activo:</label>
+                        <label for="activo">[[#{apartadoClases.activo}]]</label>
                         <select class="form-control" id="activo" th:field="*{activo}">
-                            <option value="1">Sí</option>
-                            <option value="0">No</option>
+                            <option value="1">[[#{txt.si}]]</option>
+                            <option value="0">[[#{txt.no}]]</option>
                         </select>
                     </div>
                 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('myForm').submit();">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">[[#{txt.cerrar}]]</button>
+                        <button type="submit" class="btn btn-primary" onclick="document.getElementById('myForm').submit();">[[#{txt.guardar}]]</button>
                     </div>
                 </form>
             </div>
@@ -98,16 +98,16 @@
 
     <!-- Course List Table -->
     <div class="container">
-        <h1>Lista de Cursos</h1>
+        <h1>[[#{apartadoClases.lista}]]</h1>
         <table class="table" width="100%" bgcolor="#000" cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Horario</th>
-                    <th>Fecha de Inicio</th>
-                    <th>Fecha de Fin</th>
-                    <th>Activo</th>
+                    <th>[[#{apartadoClases.id}]]</th>
+                    <th>[[#{estudiante.nombre}]]</th>
+                    <th>[[#{apartadoClases.horario}]]</th>
+                    <th>[[#{apartadoClases.fechaInicio2}]]</th>
+                    <th>[[#{apartadoClases.fechaFin2}]]</th>
+                    <th>[[#{apartadoClases.activo}]]</th>
                 </tr>
             </thead>
             <tbody>

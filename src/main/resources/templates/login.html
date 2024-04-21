@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-    <title>Login</title>
+    <title>[[#{inicio.login}]]</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
@@ -10,7 +10,7 @@
     <div class="form-box">
         <div class="form-value">
             <form th:action="@{/login}" method="post">
-                <h2>Inicio de Sesión</h2>
+                <h2>[[#{inicio.inicioSesion}]]</h2>
                 <div class="inputbox">
                     <ion-icon name="mail-outline"></ion-icon>
                     <input type="email" name="username" placeholder="Correo Institucional">
@@ -19,9 +19,9 @@
                     <ion-icon name="lock-closed-outline"></ion-icon>
                     <input type="password" name="password" placeholder="Contraseña">
                 </div>
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit">[[#{inicio.inicioSesion}]]</button>
                 <div class="register">
-                    <p>¿Olvidaste la contraseña? <a href="#">Recupérala</a></p>
+                    <p>[[#{inicio.olvidar}]] <a href="#">[[#{inicio.recuperar}]]</a></p>
                 </div>
             </form>
         </div>
