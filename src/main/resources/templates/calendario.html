@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
     <head th:fragment="head">
         <title>Calendario</title>
@@ -14,7 +15,7 @@
     </head>
     <body> 
         <header th:replace="~{plantillas/footer_header :: header}"/>
-        <div th:replace="~{calendario/fragmentos :: calendario}"/>
+        <div th:replace="~{fragmentosCalendario :: calendario}"/>
         <footer th:replace="~{plantillas/footer_header :: footer}"/>
     </body>
 </html>

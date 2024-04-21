@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +19,7 @@
 </head>
 
 <body th:class="${estudiante.estado} ? 'active' : 'inactive'">
-    <header th:replace="~{plantillas/footer_header :: admin-header-agregar-estudiante}"></header>
+    <header th:replace="~{plantillas/footer_header :: header}"></header>
 
     <div class="container">
         <h1 class="mt-5 mb-4" th:text="${estudiante.nombre} + ' ' + ${estudiante.apellidos}"></h1>
@@ -64,19 +66,30 @@
                 </div>
             </div>
         </div>
-        <div class="container text-end" th:if="${estudiante.estado}">
-            <a class="btn btn-danger" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">Desactivar</a>
+        <div class="container" th:if="${estudiante.estado}">
+            <div class="d-flex justify-content-between">
+                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">Volver</a>
+                <a class="btn btn-danger" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">Desactivar</a>
+            </div>
         </div>
 
 
-        <div class="container text-end" th:if="${!estudiante.estado}">
-            <!--Este boton todavia no sirve-->
-            <button class="btn btn-secondary">Zona de Pagos</button>
 
-            <a class="btn btn-success" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">Activar</a>
+       <div class="container" th:if="${!estudiante.estado}">
+            <div class="row">
+                <div class="col-auto">
+                    <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">Volver</a>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-secondary">Zona de Pagos</button>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-success" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">Activar</a>
+                </div>
+            </div>
         </div>
-    </div>
-
 
     <div th:replace="~{plantillas/popups :: popups}"></div>
 

@@ -1,11 +1,8 @@
 package com.fidelitas.controller;
 
-import com.fidelitas.domain.Admin;
 import com.fidelitas.domain.Estudiante;
-import com.fidelitas.service.impl.AdminServiceImpl;
 import com.fidelitas.service.impl.EstudianteServiceImpl;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,13 +21,11 @@ public class AdminController {
     }
 
     // Servicios necesarios
-    private final AdminServiceImpl adminService;
     private final EstudianteServiceImpl estudianteService;
     private final HttpSession httpSession;
 
     // Constructor que inyecta los servicios y la sesión HTTP
-    public AdminController(AdminServiceImpl adminService, EstudianteServiceImpl estudianteService, HttpSession httpSession) {
-        this.adminService = adminService;
+    public AdminController(EstudianteServiceImpl estudianteService, HttpSession httpSession) {
         this.estudianteService = estudianteService;
         this.httpSession = httpSession;
     }
@@ -38,12 +33,6 @@ public class AdminController {
     // Método para mostrar la página de administración de estudiantes
     @GetMapping("/admin/administrar-estudiantes")
     public String getEstudiantes(Model model, @RequestParam(value = "filtroEstudiantes", required = false) String filtroEstudiantes) {
-        // Verifica si hay un admin loggeado, si no redirige al inicio de sesión
-        Admin adminLoggedo = (Admin) httpSession.getAttribute("adminLoggeado");
-        if (adminLoggedo == null) {
-            return "redirect:/login";
-        }
-
         // Lógica para filtrar estudiantes activos o inactivos
         if (filtroEstudiantes == null || filtroEstudiantes.isEmpty() || filtroEstudiantes.equals("activos")) {
             List<Estudiante> estudiantesActivos = estudianteService.findActive();
@@ -61,12 +50,6 @@ public class AdminController {
     // Método para mostrar el formulario de agregar estudiante
     @GetMapping("/admin/agregar-estudiante")
     public String agregarEstudiante(Model model) {
-        // Verifica si hay un admin loggeado, si no redirige al inicio de sesión
-        Admin adminLoggedo = (Admin) httpSession.getAttribute("adminLoggeado");
-        if (adminLoggedo == null) {
-            return "redirect:/login";
-        }
-
         model.addAttribute("estudiante", new Estudiante());
 
         // Manejo de mensajes de éxito o error
@@ -80,17 +63,12 @@ public class AdminController {
             httpSession.removeAttribute("errorMessage");
         }
 
-        return "admin/agregar-estudiante";
+        return "/admin/agregar-estudiante";
     }
 
     // Método para procesar el formulario de agregar estudiante
     @PostMapping("/admin/agregar-estudiante")
     public String agregarEstudiante(@ModelAttribute Estudiante estudiante, Model model) {
-        // Verifica si hay un admin loggeado, si no redirige al inicio de sesión
-        Admin adminLoggedo = (Admin) httpSession.getAttribute("adminLoggeado");
-        if (adminLoggedo == null) {
-            return "redirect:/login";
-        }
 
         // Intenta guardar al estudiante
         try {
@@ -105,12 +83,6 @@ public class AdminController {
     // Método para ver detalles de un estudiante
     @GetMapping("/admin/estudiantes/{id}")
     public String verEstudiante(@PathVariable("id") Long id, Model model) {
-        // Verifica si hay un admin loggeado, si no redirige al inicio de sesión
-        Admin adminLoggedo = (Admin) httpSession.getAttribute("adminLoggeado");
-        if (adminLoggedo == null) {
-            return "redirect:/login";
-        }
-
         // Obtiene el estudiante por su ID
         Estudiante estudiante = estudianteService.findById(id);
         if (estudiante == null) {
@@ -137,11 +109,6 @@ public class AdminController {
     // Método para mostrar el formulario de editar estudiante
     @GetMapping("/admin/editar-estudiante/{id}")
     public String editarEstudiante(@PathVariable("id") Long id, Model model) {
-        // Verifica si hay un admin loggeado, si no redirige al inicio de sesión
-        Admin adminLoggedo = (Admin) httpSession.getAttribute("adminLoggeado");
-        if (adminLoggedo == null) {
-            return "redirect:/login";
-        }
 
         // Obtiene el estudiante por su ID
         Estudiante estudiante = estudianteService.findById(id);
@@ -163,17 +130,13 @@ public class AdminController {
             httpSession.removeAttribute("errorMessage");
         }
 
-        return "admin/editarEstudiante";
+        return "/admin/editarEstudiante";
     }
 
     // Método para procesar el formulario de editar estudiante
     @PostMapping("/admin/editar-estudiante/{id}")
     public String editarEstudiante(@PathVariable("id") Long id, @ModelAttribute Estudiante estudiante, Model model) {
-        // Verifica si hay un admin loggeado, si no redirige al inicio de sesión
-        Admin adminLoggedo = (Admin) httpSession.getAttribute("adminLoggeado");
-        if (adminLoggedo == null) {
-            return "redirect:/login";
-        }
+
 
         estudiante.setIdEstudiante(id);
 
@@ -191,11 +154,6 @@ public class AdminController {
     // Método para cambiar el estado de un estudiante (activo/inactivo)
     @GetMapping("/admin/cambiarEstado/{id}")
     public String cambiarEstado(@PathVariable("id") Long id, Model model) {
-        // Verifica si hay un admin loggeado, si no redirige al inicio de sesión
-        Admin adminLoggedo = (Admin) httpSession.getAttribute("adminLoggeado");
-        if (adminLoggedo == null) {
-            return "redirect:/login";
-        }
 
         // Obtiene el estudiante por su ID
         Estudiante estudiante = estudianteService.findById(id);
