@@ -6,7 +6,10 @@ import com.fidelitas.dao.PersonalDao;
 import com.fidelitas.domain.ApartadoClases;
 import com.fidelitas.domain.Personal;
 import java.util.List;
+
+import com.fidelitas.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +31,18 @@ public class PaginaPrincipalController {
         model.addAttribute("curso", new ApartadoClases());
         model.addAttribute("profesor", profesores); 
         model.addAttribute("profesores", new Personal());
-        return "paginaprincipal";
+
+        // Obtener el objeto UserDetails
+        var userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (userDetails != null) {
+            if (userDetails.toString().contains("ROLE_ADMIN")) {
+                return "redirect:/admin/administrar-estudiantes";
+            } else if (userDetails.toString().contains("ROLE_USER")) {
+                return "paginaprincipal";
+            }
+        }
+
+        return "redirect:/login";
     }
 
 }
