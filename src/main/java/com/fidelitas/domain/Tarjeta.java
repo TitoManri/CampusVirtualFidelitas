@@ -16,11 +16,11 @@ public class Tarjeta implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "id_tipo_tarjeta")
-    private Estudiante idTipoTarjeta;
+    private TipoTarjeta idTipoTarjeta;
 
     @ManyToOne
     @JoinColumn(name = "id_metodo_pago")
-    private Estudiante idMetodoPago;
+    private MetodoPago idMetodoPago;
 
     private String fechaVencimiento;
     private int pin;
