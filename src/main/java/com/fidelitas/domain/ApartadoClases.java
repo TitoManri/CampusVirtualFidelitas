@@ -34,7 +34,4 @@ public class ApartadoClases implements Serializable {
     private String descripcion;
     private String url;
     
-    @Column(name = "url_imagen")
-    private String urlImagen;
-    
 }

@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="horario">[[#{apartadoClases.horario}]]</label>
                         <select class="form-control" id="horario" th:field="*{horario}">
-                            <option value="">[[#{apartadoClases.selecionHorario}]]</option>
+                            <option value="">[[#{apartadoClases.seleccionHorario}]]</option>
                             <option value="8am-11am">[[#{apartadoClases.811}]]</option>
                             <option value="9am-12am">[[#{apartadoClases.912}]]</option>
                             <option value="11am-2pm">[[#{apartadoClases.112}]]</option>
@@ -72,10 +72,6 @@
                     <div class="form-group">
                         <label for="fecha_fin">[[#{apartadoClases.descripcion}]]</label>
                         <textarea class="form-control" id="descripcion"  th:field="*{descripcion}"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fecha_fin">[[#{apartadoClases.foto}]]</label>
-                        <textarea class="form-control" id="imagen_curso"  th:field="*{urlImagen}"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="activo">[[#{apartadoClases.activo}]]</label>
