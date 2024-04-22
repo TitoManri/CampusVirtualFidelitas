@@ -20,56 +20,56 @@
     <header th:replace="~{plantillas/footer_header :: header}"></header>
 
     <div class="container">
-        <h1 class="mt-5 mb-4">AGREGAR ESTUDIANTE</h1>
+        <h1 class="mt-5 mb-4">[[#{agregarEstudiante.AgregarEstudiante}]]</h1>
         <hr>
     </div>
 
     <div class="container rounded border border-secondary p-3">
         <form class="row g-3 needs-validation" novalidate method="post">
             <div class="col-md-6">
-                <label for="validationCustom01" class="form-label">Nombre</label>
+                <label for="validationCustom01" class="form-label">[[#{agregarEstudiante.Nombre}]]</label>
                 <input type="text" class="form-control" id="validationCustom01" placeholder="Juan" name="nombre"
                     required>
                 <div class="valid-feedback">
-                    ¡Se ve bien!
+                    [[#{agregarEstudiante.NombreTxt}]]
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="validationCustom02" class="form-label">Apellido</label>
+                <label for="validationCustom02" class="form-label">[[#{agregarEstudiante.Apellidos}]]</label>
                 <input type="text" class="form-control" id="validationCustom02" placeholder="Perez Perez"
                     name="apellidos" required>
                 <div class="valid-feedback">
-                    ¡Se ve bien!
+                    [[#{agregarEstudiante.ApellidosTxt}]]
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="validationCustom03" class="form-label">Correo</label>
+                <label for="validationCustom03" class="form-label">[[#{agregarEstudiante.Correo}]]</label>
                 <input type="email" class="form-control" id="validationCustom03" placeholder="email@example.com"
                     name="correo" required>
                 <div class="invalid-feedback">
-                    Por favor, proporciona un correo válido.
+                    [[#{agregarEstudiante.CorreoTxt}]]
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="validationCustom04" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="validationCustom04" placeholder="Contraseña Segura"
+                <label for="validationCustom04" class="form-label">[[#{agregarEstudiante.Contrasena}]]</label>
+                <input type="password" class="form-control" id="validationCustom04" placeholder="************"
                     name="contrasena" required>
                 <div class="invalid-feedback">
-                    Por favor, proporciona una contraseña.
+                    [[#{agregarEstudiante.ContrasenaTxt}]]
                 </div>
             </div>
             <!-- Lo mejor sería que se suba un archivo -->
             <div class="col-md-12">
-                <label for="validationCustom05" class="form-label">Foto de perfil</label>
-                <input type="url" class="form-control" id="validationCustom05" placeholder="URL a la imagen"
+                <label for="validationCustom05" class="form-label">[[#{agregarEstudiante.FotoPerfil}]]</label>
+                <input type="url" class="form-control" id="validationCustom05" placeholder="URL"
                     name="fotoPerfil" required>
                 <div class="invalid-feedback">
-                    Por favor, proporciona una URL válida.
+                    [[#{agregarEstudiante.FotoPerfilTxt}]]
                 </div>
             </div>
             <div class="d-flex justify-content-between">
-                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">Volver</a>
-                <button class="btn btn-primary" type="submit">Agregar Estudiante</button>
+                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">[[#{agregarEstudiante.Volver}]]</a>
+                <button class="btn btn-primary" type="submit">[[#{agregarEstudiante.AgregarEstudianteBoton}]]</button>
             </div>
         </form>
     </div>

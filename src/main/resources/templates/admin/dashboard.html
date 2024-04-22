@@ -20,20 +20,20 @@
     <header th:replace="~{plantillas/footer_header :: header}"></header>
 
     <div class="container">
-        <h1 class="mt-5 mb-4">ESTUDIANTES</h1>
+        <h1 class="mt-5 mb-4">[[#{dashboard.Estudiantes}]]</h1>
         <hr>
     </div>
 
     <!-- Botón para agregar estudiante -->
     <div class="container mb-3">
-        <a href="/admin/agregar-estudiante" class="btn btn-success">Agregar Estudiante</a>
+        <a href="/admin/agregar-estudiante" class="btn btn-success">[[#{dashboard.AgregarEstudiantes}]]</a>
     </div>
 
     <form id="filtroForm" method="get" class="container mb-3">
-        <label for="filtroEstudiantes" class="form-label">Filtrar Estudiantes:</label>
+        <label for="filtroEstudiantes" class="form-label">[[#{dashboard.FiltrarEstudiantes}]]</label>
         <select class="form-select" id="filtroEstudiantes" name="filtroEstudiantes">
-            <option value="activos" th:selected="${filtroEstudiantes == 'activos'}">Activos</option>
-            <option value="inactivos" th:selected="${filtroEstudiantes == 'inactivos'}">Inactivos</option>
+            <option value="activos" th:selected="${filtroEstudiantes == 'activos'}">[[#{dashboard.Activo}]]</option>
+            <option value="inactivos" th:selected="${filtroEstudiantes == 'inactivos'}">[[#{dashboard.Inactivo}]]</option>
         </select>
     </form>
     <!-- cambiar a p-0 si no quiere que tenga el margen entre el borde de afuera y la lista -->
@@ -48,7 +48,7 @@
                     </div>
                     <div>
                         <a th:href="@{'/admin/estudiantes/' + ${estudiante.getIdEstudiante()}}"
-                            class="btn btn-primary">Ver</a>
+                            class="btn btn-primary">[[#{dashboard.Ver}]]</a>
                     </div>
                 </div>
             </li>

@@ -44,9 +44,7 @@ public class PaginaPrincipalController {
         // Obtener el objeto UserDetails
         var userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (userDetails != null) {
-            if (userDetails.toString().contains("ROLE_ADMIN")) {
-                return "redirect:/admin/administrar-estudiantes";
-            } else if (userDetails.toString().contains("ROLE_USER")) {
+            if (userDetails.toString().contains("ROLE_USER") || userDetails.toString().contains("ROLE_ADMIN")) {
                 // obtener el usuario autenticado
                 Estudiante estudiante = estudianteService.getEstudianteFromUserDetails(userDetails);
                 if (estudiante != null) {
