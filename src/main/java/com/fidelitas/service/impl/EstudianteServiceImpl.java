@@ -112,8 +112,12 @@ public class EstudianteServiceImpl implements EstudianteService {
 
     @Override
     public Estudiante getEstudianteFromUserDetails(Object userDetails) {
-        String correo = trimCorreo(userDetails.toString());
-        return estudianteDao.findByCorreo(correo);
+        try {
+            String correo = trimCorreo(userDetails.toString());
+            return estudianteDao.findByCorreo(correo);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private String trimCorreo(String text) {
