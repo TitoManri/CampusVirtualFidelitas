@@ -95,7 +95,7 @@ public class ProjectConfig implements WebMvcConfigurer {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/img/**","/webjars/**","/icons/**");
+        return (web) -> web.ignoring().requestMatchers("/css/**", "/js/**", "/img/**","/webjars/**","/icons/**","/cambiarIdioma");
     }
     
     @Bean
