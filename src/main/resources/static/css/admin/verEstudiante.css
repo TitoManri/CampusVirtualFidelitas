@@ -20,7 +20,7 @@
 
 
 .personal-info a::after {
-    content: url('../../icons/edit-svgrepo-com.svg');
+    content: url('/icons/edit-svgrepo-com.svg');
     display: inline-block;
     width: 20px;
     height: 20px;
