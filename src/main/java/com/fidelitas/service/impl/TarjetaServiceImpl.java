@@ -6,6 +6,8 @@ import com.fidelitas.service.TarjetaService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +28,8 @@ public class TarjetaServiceImpl implements TarjetaService {
     @Override
     @Transactional(readOnly = true)
     public Tarjeta getTarjetaById(long id) {
-        return tarjetaDao.findById(id);
+        Optional<Tarjeta> tarjeta = tarjetaDao.findById(id);
+        return tarjeta.orElse(null);
     }
 
     @Override

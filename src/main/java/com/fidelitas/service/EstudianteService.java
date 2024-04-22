@@ -21,4 +21,6 @@ public interface EstudianteService {
     void edit(Estudiante estudiante);
 
     void changeStatus(Estudiante estudiante);
+
+    public Estudiante getEstudianteFromUserDetails(Object userDetails);
 }
