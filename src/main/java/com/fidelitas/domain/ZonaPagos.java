@@ -32,4 +32,8 @@ public class ZonaPagos implements Serializable {
     private LocalDateTime fecha;
 
     private boolean estadoPago;
+
+    @Column(name = "descripcion", nullable = false, length = 100)
+    private String descripcion;
+
 }
