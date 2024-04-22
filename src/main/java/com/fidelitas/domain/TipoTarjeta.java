@@ -1,9 +1,5 @@
 package com.fidelitas.domain;
 
-/**
- *
- * @author Nigel
- */
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;

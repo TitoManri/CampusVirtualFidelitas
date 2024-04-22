@@ -61,14 +61,12 @@ public class ZonaPagosController {
 
         Estudiante estudiante = estudianteDao.findByCorreo(estudianteOnSession.getCorreo());
 
-        // no se ha implementado la logica de las tarjetas y metodos de pago TODO
         if (zonaPagosService.realizarPago(banco, numeroTarjeta, fechaVencimiento, tipoTarjeta, pin, metodoPago, estudiante)) {
             httpSession.setAttribute("successMessage", "Pago realizado con éxito");
         } else {
             httpSession.setAttribute("errorMessage", "No se pudo realizar el pago");
         }
 
-        // Por último, redirige a la vista que mostrará la confirmación o cualquier otra acción que necesites
         return "redirect:/zonaPagos";
     }
 }

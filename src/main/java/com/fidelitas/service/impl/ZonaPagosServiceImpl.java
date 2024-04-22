@@ -99,14 +99,12 @@ public class ZonaPagosServiceImpl implements ZonaPagosService {
             return false;
         }
 
-        // SE DEBERIA LLAMAR PAGO NO ZONAPAGOS btw
         ZonaPagos pago = new ZonaPagos();
         pago.setBanco(banco);
         pago.setDescripcion("Pago por curso");
         pago.setFecha(LocalDateTime.now());
-        pago.setEstadoPago(true);   // por defecto se asume que el pago fue exitoso
+        pago.setEstadoPago(true);  
 
-        // cambiar cuando se implemente la logica de las tarjetas
         pago.setMonto(100.00);  // cuando se implemente el precio de los cursos se debe cambiar
         pago.setIdTarjeta(tarjetaDaoByNumeroTarjeta);
 
