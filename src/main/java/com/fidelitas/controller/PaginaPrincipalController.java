@@ -8,14 +8,19 @@ import com.fidelitas.domain.Estudiante;
 import com.fidelitas.domain.Personal;
 import java.util.List;
 
-import com.fidelitas.domain.Usuario;
 import com.fidelitas.service.EstudianteService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 @Controller
 public class PaginaPrincipalController {
@@ -56,5 +61,12 @@ public class PaginaPrincipalController {
 
         return "redirect:/login";
     }
+    
+    @GetMapping("/cambiarIdioma")
+    public String cambiarIdioma(@RequestParam("lang") String lang, HttpServletRequest request, HttpServletResponse response) {
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
+    }
+
 
 }
