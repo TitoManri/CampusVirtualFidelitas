@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TipoTarjetaDao extends JpaRepository <TipoTarjeta, Long>{
     TipoTarjeta findById(long id);
+
+    TipoTarjeta findByNombre(String tipoTarjeta);
 }
