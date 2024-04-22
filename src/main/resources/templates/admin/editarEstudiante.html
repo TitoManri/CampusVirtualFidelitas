@@ -19,54 +19,54 @@
 <body>
 <header th:replace="~{plantillas/footer_header :: header}"/>
     <div class="container">
-        <h1 class="mt-5 mb-4">EDITAR ESTUDIANTE</h1>
+        <h1 class="mt-5 mb-4">[[#{editarEstudiante.EditarEstudiante}]]</h1>
         <hr>
     </div>
 
     <div class="container rounded border border-secondary p-3">
         <form class="row g-3 needs-validation" novalidate method="post" th:object="${estudiante}">
             <div class="col-md-6">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="nombre" class="form-label">[[#{editarEstudiante.Nombre}]]</label>
                 <input type="text" class="form-control" id="nombre" th:value="${estudiante.nombre}" name="nombre"
                     required>
                 <div class="valid-feedback">
-                    ¡Se ve bien!
+                    [[#{editarEstudiante.NombreTxt}]]
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="apellidos" class="form-label">Apellido</label>
+                <label for="apellidos" class="form-label">[[#{editarEstudiante.Apellidos}]]</label>
                 <input type="text" class="form-control" id="apellidos" th:value="${estudiante.apellidos}"
                     name="apellidos" required>
                 <div class="valid-feedback">
-                    ¡Se ve bien!
+                    [[#{editarEstudiante.ApellidosTxt}]]
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="correo" class="form-label">Correo</label>
+                <label for="correo" class="form-label">[[#{editarEstudiante.Correo}]]</label>
                 <input type="email" class="form-control" id="correo" th:value="${estudiante.correo}" name="correo"
                     required>
                 <div class="invalid-feedback">
-                    Por favor, proporciona un correo válido.
+                    [[#{editarEstudiante.CorreoTxt}]]
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="contrasena" class="form-label">Contraseña</label>
+                <label for="contrasena" class="form-label">[[#{editarEstudiante.Contrasena}]]</label>
                 <input type="password" class="form-control" id="contrasena" name="contrasena">
                 <div class="invalid-feedback">
-                    Por favor, proporciona una contraseña.
+                    [[#{editarEstudiante.ContrasenaTxt}]]
                 </div>
             </div>
             <div class="col-md-12">
-                <label for="fotoPerfil" class="form-label">Foto de perfil</label>
+                <label for="fotoPerfil" class="form-label">[[#{editarEstudiante.FotoPerfil}]]</label>
                 <input type="url" class="form-control" id="fotoPerfil" th:value="${estudiante.fotoPerfil}"
                     name="fotoPerfil" required>
                 <div class="invalid-feedback">
-                    Por favor, proporciona una URL válida.
+                    [[#{editarEstudiante.FotoPerfilTxt}]]
                 </div>
             </div>
             <div class="d-flex justify-content-between">
-                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">Volver</a>
-                <button class="btn btn-primary" type="submit">Actualizar Estudiante</button>
+                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">[[#{editarEstudiante.Volver}]]</a>
+                <button class="btn btn-primary" type="submit">[[#{editarEstudiante.ActualizarEstudianteBoton}]]</button>
             </div>
         </form>
     </div>

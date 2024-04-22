@@ -36,8 +36,8 @@
                     <h2 th:text="${estudiante.nombre} + ' ' + ${estudiante.apellidos}"></h2>
                     <!-- el anchor esta vacio porque se agrega el svg desde css -->
                     <a th:href="@{/admin/editar-estudiante/{idEstudiante}(idEstudiante=${estudiante.idEstudiante})}"></a>
-                    <p><strong>Identificacion:</strong> <span th:text="${estudiante.idEstudiante}"></span></p>
-                    <p><strong>Correo:</strong> <span th:text="${estudiante.correo}"></span></p>
+                    <p><strong>[[#{verEstudiante.Identificacion}]]</strong> <span th:text="${estudiante.idEstudiante}"></span></p>
+                    <p><strong>[[#{verEstudiante.Correo}]]</strong> <span th:text="${estudiante.correo}"></span></p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -47,19 +47,19 @@
                         <div class="col">
                             <div class="summary-item">
                                 <span class="badge bg-secondary">0</span>
-                                <p>Contactos</p>
+                                <p>[[#{verEstudiante.Contactos}]]</p>
                             </div>
                         </div>
                         <div class="col">
                             <div class="summary-item">
                                 <span class="badge bg-secondary">0</span>
-                                <p>Discusiones</p>
+                                <p>[[#{verEstudiante.Discusiones}]]</p>
                             </div>
                         </div>
                         <div class="col">
                             <div class="summary-item">
                                 <span class="badge bg-secondary">0</span>
-                                <p>Certificados</p>
+                                <p>[[#{verEstudiante.Certificados}]]</p>
                             </div>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
         </div>
         <div class="container" th:if="${estudiante.estado}">
             <div class="d-flex justify-content-between">
-                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">Volver</a>
-                <a class="btn btn-danger" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">Desactivar</a>
+                <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">[[#{verEstudiante.Volver}]]</a>
+                <a class="btn btn-danger" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">[[#{verEstudiante.Desactivar}]]</a>
             </div>
         </div>
 
@@ -78,15 +78,15 @@
        <div class="container" th:if="${!estudiante.estado}">
             <div class="row">
                 <div class="col-auto">
-                    <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">Volver</a>
+                    <a th:href="@{/admin/administrar-estudiantes}" class="btn btn-primary">[[#{verEstudiante.Volver}]]</a>
                 </div>
                 <div class="col">
                     <div class="d-flex justify-content-end">
-                        <a th:href="@{/zonaPagos}" class="btn btn-primary">Zona Pagos</a>
+                        <a th:href="@{/zonaPagos}" class="btn btn-primary">[[#{verEstudiante.ZonaPagos}]]</a>
                     </div>
                 </div>
                 <div class="col-auto">
-                    <a class="btn btn-success" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">Activar</a>
+                    <a class="btn btn-success" th:href="@{/admin/cambiarEstado/{id}(id=${estudiante.getIdEstudiante()})}">[[#{verEstudiante.Activar}]]</a>
                 </div>
             </div>
         </div>

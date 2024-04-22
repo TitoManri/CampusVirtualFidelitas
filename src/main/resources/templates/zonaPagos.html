@@ -3,7 +3,7 @@
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
-    <title>Zona De Pagos</title>
+    <title>[[#{zonaPagos.Titulo}]]</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -52,24 +52,24 @@
                 <div class="personal-info">
                     <h2 th:text="${estudiante.nombre} + ' ' + ${estudiante.apellidos}"></h2>
                     <!-- el anchor esta vacio porque se agrega el svg desde css -->
-                    <p><strong>Identificacion:</strong> <span th:text="${estudiante.idEstudiante}"></span></p>
-                    <p><strong>Correo:</strong> <span th:text="${estudiante.correo}"></span></p>
+                    <p><strong>[[#{zonaPagos.Identificacion}]]</strong> <span th:text="${estudiante.idEstudiante}"></span></p>
+                    <p><strong>[[#{zonaPagos.Identificacion}]]</strong> <span th:text="${estudiante.correo}"></span></p>
                 </div>
             </div>
             <div style="margin-left: auto; padding: 10px; border: 3px solid #b4b4b4; border-radius: 10px;">
-                <div>Saldo del Pagare</div>
+                <div>[[#{zonaPagos.SaldoPagare}]]</div>
                 <div style="text-align: center">$600,000.00</div>
             </div>
         </div>
         <div style="text-align: right;">&nbsp;</div>
         <div style="text-align: right;">&nbsp;</div>
         <div style="text-align: right;"><button id="verEstadoCuenta"
-                style="background-color: #b4b4b4; border-radius: 10px; color: black;">Ver estado de cuenta</button>
+                style="background-color: #b4b4b4; border-radius: 10px; color: black;">[[#{zonaPagos.VerEstado}]]</button>
         </div>
         <div style="text-align: right;">&nbsp;</div>
         <div style="text-align: right;">&nbsp;</div>
         <div style="text-align: right;"><button id="pagoColegiatura"
-                style="background-color: #b4b4b4; border-radius: 10px; color: black;">Pago de colegiatura</button></div>
+                style="background-color: #b4b4b4; border-radius: 10px; color: black;">[[#{zonaPagos.PagoColegiatura}]]</button></div>
     </section>
 
     <!-- Contenedor del formulario -->
@@ -87,58 +87,58 @@
                 <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                     <div style="flex: 1; margin-right: 10px;">
                         <div class="mb-3">
-                            <label for="banco">Banco Perteneciente</label>
+                            <label for="banco">[[#{zonaPagos.BancoPerteneciente}]]</label>
                             <input type="text" class="form-control" id="banco" name="banco" size="30" required />
-                            <div class="invalid-feedback">Por favor ingresa el nombre del banco.</div>
+                            <div class="invalid-feedback">[[#{zonaPagos.BancoPertenecienteTxt}]]</div>
                         </div>
                         <div class="mb-3">
-                            <label for="numeroTarjeta">Número de Tarjeta</label>
+                            <label for="numeroTarjeta">[[#{zonaPagos.NumeroTarjeta}]]</label>
                             <input type="text" class="form-control" id="numeroTarjeta" name="numeroTarjeta"
                                 placeholder="0000 0000 0000 0000" size="16" required />
-                            <div class="invalid-feedback">Por favor ingresa un número de tarjeta válido.</div>
+                            <div class="invalid-feedback">[[#{zonaPagos.NumeroTarjetaTxt}]]</div>
                         </div>
                         <div class="mb-3">
-                            <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                            <label for="fechaVencimiento">[[#{zonaPagos.FechaVencimiento}]]</label>
                             <input type="text" class="form-control" id="fechaVencimiento" name="fechaVencimiento"
                                 placeholder="00/00" size="5" required />
-                            <div class="invalid-feedback">Por favor ingresa una fecha de vencimiento válida.</div>
+                            <div class="invalid-feedback">[[#{zonaPagos.FechaVencimientoTxt}]]</div>
                         </div>
                     </div>
                     <div style="flex: 1;">
                         <div class="mb-3">
-                            <label for="tipoTarjeta">Tipo de Tarjeta</label>
+                            <label for="tipoTarjeta">[[#{zonaPagos.TipoTarjeta}]]</label>
                             <select class="form-select" id="tipoTarjeta" name="tipoTarjeta" required>
-                                <option value="">Selecciona...</option>
-                                <option value="Credito">Crédito</option>
-                                <option value="Debito">Débito</option>
+                                <option value="">[[#{zonaPagos.Selecciona}]]</option>
+                                <option value="Credito">[[#{zonaPagos.Credito}]]</option>
+                                <option value="Debito">[[#{zonaPagos.Debito}]]</option>
                             </select>
                             <div class="invalid-feedback">Por favor selecciona el tipo de tarjeta.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="pin">Pin de Seguridad</label>
+                            <label for="pin">[[#{zonaPagos.Pin}]]</label>
                             <input type="text" class="form-control" id="pin" name="pin" placeholder="000" size="3"
                                 required />
-                            <div class="invalid-feedback">Por favor ingresa el pin de seguridad.</div>
+                            <div class="invalid-feedback">[[#{zonaPagos.PinTxt}]]</div>
                         </div>
                         <div class="mb-3">
-                            <label for="metodoPago">Método de Pago</label>
+                            <label for="metodoPago">[[#{zonaPagos.MetodoPago}]]</label>
                             <select class="form-select" id="metodoPago" name="metodoPago" required>
-                                <option value="">Selecciona...</option>
-                                <option value="Pagaré">Pagaré</option>
-                                <option value="Contado">Contado</option>
+                                <option value="">[[#{zonaPagos.Selecciona}]]</option>
+                                <option value="Pagaré">[[#{zonaPagos.Pagare}]]</option>
+                                <option value="Contado">[[#{zonaPagos.Contado}]]</option>
                             </select>
-                            <div class="invalid-feedback">Por favor selecciona el método de pago.</div>
+                            <div class="invalid-feedback"></div>
                         </div>
                     </div>
                 </div>
                 <div class="btns-section" style="display: flex; justify-content: space-between;">
                     <div class="boton-modal" style="text-align: left;">
                         <button type="button" id="btnRegresar" class="btn btnRegresar"
-                            style="background-color: rgb(236, 89, 63); border-radius: 10px; color: white;">Regresar</button>
+                            style="background-color: rgb(236, 89, 63); border-radius: 10px; color: white;">[[#{zonaPagos.Regresar}]]</button>
                     </div>
                     <div class="boton-modal" style="text-align: right;">
                         <button type="submit" id="realizarPago" class="btn realizarPago"
-                            style="background-color: rgb(26, 48, 124); border-radius: 10px; color: white;">Pagar</button>
+                            style="background-color: rgb(26, 48, 124); border-radius: 10px; color: white;">[[#{zonaPagos.Pagar}]]</button>
                     </div>
                 </div>
             </form>
@@ -151,11 +151,10 @@
     <div id="datosInvalidos" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>DATOS INVÁLIDOS</h2>
-            <p>Por favor, revise que todos los campos se encuentren con la información correspondiente, igualmente
-                recuerde no dejar espacios en blanco</p>
+            <h2>[[#{zonaPagos.Modal.DatosInvalidos}]]</h2>
+            <p>[[#{zonaPagos.Modal.RevisarCampos}]]</p>
             <div class="btn-cerrar" style="text-align: right;">
-                <button id="cerrarModal">Revisar Datos</button>
+                <button id="cerrarModal">[[#{zonaPagos.Modal.RevisarDatos}]]</button>
             </div>
         </div>
     </div>
@@ -163,11 +162,10 @@
     <!-- Modal para pago realizado con éxito -->
     <div id="pagoExitosoModal" class="modal" style="display: none;">
         <div class="modal-content">
-            <h2>PAGO REALIZADO CON ÉXITO</h2>
-            <p>Por favor, revise tu correo registrado en tu perfil, hemos enviado un correo electrónico con la factura
-                del pago de la colegiatura.</p>
+            <h2>[[#{zonaPagos.Modal.PagoExitoso}]]</h2>
+            <p>[[#{zonaPagos.Modal.CorreoEnviado}]]</p>
             <div style="text-align: center;">
-                <button id="continuarBtn" class="btn continuarBtn">Continuar</button>
+                <button id="continuarBtn" class="btn continuarBtn">[[#{zonaPagos.Modal.Continuar}]]</button>
             </div>
         </div>
     </div>
@@ -187,11 +185,11 @@
                 <h2 th:text="${estudiante.nombre} + ' ' + ${estudiante.apellidos}"></h2>
             </div>
             <div style="margin-bottom: 20px; border: 3px solid #b4b4b4; border-radius: 10px; padding: 10px;">
-                <div>Próximo pago a realizar</div>
+                <div>[[#{zonaPagos.ProximoPagoRealizar}]]</div>
                 <div style="padding-left: 20px;">$120,000.00</div>
             </div>
             <div style="margin-bottom: 20px; border: 3px solid #b4b4b4; border-radius: 10px; padding: 10px;">
-                <div>Últimos pagos realizados</div>
+                <div>[[#{zonaPagos.UtimosPagosRealizados}]]</div>
                 <div style="padding-left: 20px;">$120,000.00</div>
                 <div style="padding-left: 20px;">$120,000.00</div>
                 <div style="padding-left: 20px;">$130,000.00</div>
@@ -200,7 +198,7 @@
 
         <div class="boton-modal" style="text-align: left;">
             <button type="button" id="btnRegresarFromEstadoCuenta" class="btn btnRegresar"
-                    style="background-color: rgb(236, 89, 63); border-radius: 10px; color: white;">Regresar</button>
+                    style="background-color: rgb(236, 89, 63); border-radius: 10px; color: white;">[[#{zonaPagos.Regresar}]]</button>
         </div>
 
     </section>
