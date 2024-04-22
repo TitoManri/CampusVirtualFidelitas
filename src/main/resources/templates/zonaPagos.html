@@ -197,6 +197,12 @@
                 <div style="padding-left: 20px;">$130,000.00</div>
             </div>
         </div>
+
+        <div class="boton-modal" style="text-align: left;">
+            <button type="button" id="btnRegresarFromEstadoCuenta" class="btn btnRegresar"
+                    style="background-color: rgb(236, 89, 63); border-radius: 10px; color: white;">Regresar</button>
+        </div>
+
     </section>
     <footer th:replace="~{plantillas/footer_header :: footer}" />
 
@@ -218,6 +224,12 @@
 
         // Función para regresar a Zona de Pagos
         document.getElementById("btnRegresar").onclick = function () {
+            document.getElementById("zonaPagos").style.display = "block";
+            formularioContainer.style.display = "none";
+            document.getElementById("estadoCuenta").style.display = "none";
+        };
+
+        document.getElementById("btnRegresarFromEstadoCuenta").onclick = function () {
             document.getElementById("zonaPagos").style.display = "block";
             formularioContainer.style.display = "none";
             document.getElementById("estadoCuenta").style.display = "none";
